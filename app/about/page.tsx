@@ -100,11 +100,11 @@ function HeroSection() {
       <div style={{ position: "absolute", bottom: "5%", right: "-4%", width: "min(380px,50vw)", height: "min(380px,50vw)", borderRadius: "50%", background: "radial-gradient(circle,rgba(109,191,62,0.08) 0%,transparent 65%)", pointerEvents: "none" }} />
 
       <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 0.7s cubic-bezier(.22,.68,0,1.2)", display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", border: "1.5px solid #C8EBAA", borderRadius: 100, padding: "7px 20px", marginBottom: 32, boxShadow: "0 2px 16px rgba(109,191,62,0.1)", position: "relative", zIndex: 1 }}>
-        <span style={{ fontSize: 12, fontWeight: 800, color: "#3A7A18", letterSpacing: "1.5px", textTransform: "uppercase" }}>Our Story</span>
+        <span style={{ fontSize: 12, fontWeight: 800, color: "#b774db", letterSpacing: "1.5px", textTransform: "uppercase" }}>Our Story</span>
       </div>
 
       <h1 style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(28px)", transition: "all 0.8s cubic-bezier(.22,.68,0,1.2) 0.1s", fontFamily: "'Syne',sans-serif", fontSize: "clamp(38px,7vw,96px)", fontWeight: 800, lineHeight: 1.04, letterSpacing: "-3px", color: "#141414", maxWidth: 960, marginBottom: 26, position: "relative", zIndex: 1 }}>
-        Every brand has<br />a <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>story.</em> Ours<br />began with yours.
+        Every brand has<br />a <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>story.</em> Ours<br />began with yours.
       </h1>
 
       <p style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(18px)", transition: "all 0.8s cubic-bezier(.22,.68,0,1.2) 0.22s", fontSize: "clamp(15px,1.7vw,20px)", color: "#5C5C5C", maxWidth: 580, lineHeight: 1.75, fontWeight: 500, marginBottom: 52, position: "relative", zIndex: 1 }}>
@@ -119,7 +119,7 @@ function HeroSection() {
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85" alt="Team" style={{ width: "100%", height: 280, objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.45) 0%,transparent 55%)" }} />
             <div style={{ position: "absolute", bottom: 18, left: 18 }}>
-              <div style={{ fontSize: 11, fontWeight: 800, color: "#A8E063", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2007</div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: "#ba3aff", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2007</div>
               <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 18, fontWeight: 800, color: "#fff" }}>Mumbai, India</div>
             </div>
           </div>
@@ -128,7 +128,7 @@ function HeroSection() {
               <div style={{ width: 38, height: 38, borderRadius: 10, background: "#E8F7D8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🏆</div>
               <div><div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#1A1A1A", lineHeight: 1 }}>340+</div><div style={{ fontSize: 11, color: "#888", fontWeight: 600 }}>Brands Scaled</div></div>
             </div>
-            <div style={{ background: "#6DBF3E", borderRadius: 14, padding: "13px 18px", boxShadow: "0 8px 32px rgba(109,191,62,0.35)", display: "flex", gap: 12, alignItems: "center" }}>
+            <div style={{ background: "#ff6ce7", borderRadius: 14, padding: "13px 18px", boxShadow: "0 8px 32px rgba(109,191,62,0.35)", display: "flex", gap: 12, alignItems: "center" }}>
               <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff", lineHeight: 1 }}>17 yrs</div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>of Expertise</div>
             </div>
@@ -142,7 +142,7 @@ function HeroSection() {
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85" alt="Team" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.45) 0%,transparent 55%)" }} />
             <div style={{ position: "absolute", bottom: 24, left: 24 }}>
-              <div style={{ fontSize: 12, fontWeight: 800, color: "#A8E063", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2007</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "#ba3aff", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2007</div>
               <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff" }}>Mumbai, India</div>
             </div>
           </div>
@@ -158,7 +158,7 @@ function HeroSection() {
             <div style={{ width: 42, height: 42, borderRadius: 11, background: "#E8F7D8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>🏆</div>
             <div><div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#1A1A1A", lineHeight: 1 }}>340+</div><div style={{ fontSize: 12, color: "#888", fontWeight: 600 }}>Brands Scaled</div></div>
           </div>
-          <div style={{ position: "absolute", right: "6%", bottom: "2%", background: "#6DBF3E", borderRadius: 16, padding: "14px 18px", boxShadow: "0 8px 32px rgba(109,191,62,0.35)", display: "flex", gap: 12, alignItems: "center" }}>
+          <div style={{ position: "absolute", right: "6%", bottom: "2%", background: "#ff6ce7", borderRadius: 16, padding: "14px 18px", boxShadow: "0 8px 32px rgba(109,191,62,0.35)", display: "flex", gap: 12, alignItems: "center" }}>
             <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff", lineHeight: 1 }}>17 yrs</div>
             <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>of Expertise</div>
           </div>
@@ -177,20 +177,20 @@ function MissionVision() {
         <div className="mv-grid">
           <div style={{ background: "#1A1A1A", borderRadius: 26, padding: "clamp(36px,5vw,60px) clamp(28px,4vw,52px)", position: "relative", overflow: "hidden", opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-40px)", transition: "all 0.85s cubic-bezier(.22,.68,0,1.2)" }}>
             <div style={{ position: "absolute", top: "-30%", right: "-10%", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle,rgba(109,191,62,0.18) 0%,transparent 70%)" }} />
-            <div style={{ fontSize: 10, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 18, position: "relative" }}>Our Mission</div>
+            <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 18, position: "relative" }}>Our Mission</div>
             <div style={{ fontSize: 48, marginBottom: 20, lineHeight: 1 }}>🎯</div>
             <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(22px,2.8vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.2, marginBottom: 20, letterSpacing: "-0.8px" }}>
-              Making digital success <em style={{ fontStyle: "italic", color: "#A8E063" }}>accessible</em> for everyone.
+              Making digital success <em style={{ fontStyle: "italic", color: "#ba3aff" }}>accessible</em> for everyone.
             </h2>
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.85, fontWeight: 500 }}>To empower businesses of all sizes with innovative, data-driven digital marketing solutions that drive growth, build meaningful customer connections, and deliver measurable results. We strive to make digital success accessible, transparent, and scalable for every client we serve.</p>
           </div>
 
           <div style={{ background: "linear-gradient(145deg,#F0FAE6,#E4F5D4)", borderRadius: 26, padding: "clamp(36px,5vw,60px) clamp(28px,4vw,52px)", position: "relative", overflow: "hidden", border: "1.5px solid #C8EBAA", opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(40px)", transition: "all 0.85s cubic-bezier(.22,.68,0,1.2) 0.15s" }}>
             <div style={{ position: "absolute", bottom: "-20%", left: "-5%", width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle,rgba(109,191,62,0.15) 0%,transparent 70%)" }} />
-            <div style={{ fontSize: 10, fontWeight: 800, color: "#3A7A18", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 18 }}>Our Vision</div>
+            <div style={{ fontSize: 10, fontWeight: 800, color: "#b774db", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 18 }}>Our Vision</div>
             <div style={{ fontSize: 48, marginBottom: 20, lineHeight: 1 }}>🌐</div>
             <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(22px,2.8vw,36px)", fontWeight: 800, color: "#1A1A1A", lineHeight: 1.2, marginBottom: 20, letterSpacing: "-0.8px" }}>
-              The most <em style={{ fontStyle: "italic", color: "#5A9B2A" }}>trusted</em> growth agency, globally.
+              The most <em style={{ fontStyle: "italic", color: "#b774db" }}>trusted</em> growth agency, globally.
             </h2>
             <p style={{ fontSize: 14, color: "#4A5A3A", lineHeight: 1.85, fontWeight: 500 }}>To be the most trusted and results-oriented digital marketing agency, recognized globally for transforming brands through creativity, technology, and performance. We aim to lead the industry by setting new standards in strategy, service, and success.</p>
           </div>
@@ -216,8 +216,8 @@ function TimelineItem({ m, i, inView }: TimelineItemProps) {
       onMouseLeave={() => setHov(false)}
       style={{ position: "relative", paddingLeft: 32, paddingBottom: 36, opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(24px)", transition: `all 0.7s cubic-bezier(.22,.68,0,1.2) ${0.1 + i * 0.1}s` }}
     >
-      <div style={{ position: "absolute", left: -9, top: 4, width: 16, height: 16, borderRadius: "50%", background: hov ? "#6DBF3E" : "#fff", border: `2px solid ${hov ? "#6DBF3E" : "#CCC"}`, transition: "all 0.3s", boxShadow: hov ? "0 0 0 5px rgba(109,191,62,0.2)" : "none" }} />
-      <div style={{ fontSize: 11, fontWeight: 800, color: hov ? "#6DBF3E" : "#AAA", letterSpacing: "1.5px", marginBottom: 7, transition: "color 0.3s" }}>{m.year}</div>
+      <div style={{ position: "absolute", left: -9, top: 4, width: 16, height: 16, borderRadius: "50%", background: hov ? "#ff6ce7" : "#fff", border: `2px solid ${hov ? "#ff6ce7" : "#CCC"}`, transition: "all 0.3s", boxShadow: hov ? "0 0 0 5px rgba(109,191,62,0.2)" : "none" }} />
+      <div style={{ fontSize: 11, fontWeight: 800, color: hov ? "#ff6ce7" : "#AAA", letterSpacing: "1.5px", marginBottom: 7, transition: "color 0.3s" }}>{m.year}</div>
       <p style={{ fontSize: 14, color: hov ? "#1A1A1A" : "#666", lineHeight: 1.7, fontWeight: 500, transition: "color 0.3s" }}>{m.event}</p>
     </div>
   );
@@ -233,10 +233,10 @@ function StorySection() {
           {/* Left text */}
           <div ref={ref}>
             <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease", marginBottom: 10 }}>
-              <span style={{ fontSize: 10, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase" }}>Our Story</span>
+              <span style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase" }}>Our Story</span>
             </div>
             <h2 style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.75s ease 0.08s", fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,3.5vw,50px)", fontWeight: 800, color: "#1A1A1A", lineHeight: 1.1, letterSpacing: "-1.5px", marginBottom: 24 }}>
-              Built on trust,<br />driven by <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>results.</em>
+              Built on trust,<br />driven by <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>results.</em>
             </h2>
             <div style={{ opacity: inView ? 1 : 0, transition: "all 0.8s ease 0.16s", display: "flex", flexDirection: "column", gap: 16 }}>
               {[
@@ -283,9 +283,9 @@ function ValueCard({ v, i, inView }: ValueCardProps) {
     <div
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      style={{ background: hov ? "#1A1A1A" : "#F7F4EF", borderRadius: 22, padding: "clamp(28px,3vw,40px) clamp(22px,2.5vw,30px)", transition: "all 0.35s cubic-bezier(.22,.68,0,1.2)", cursor: "default", opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(32px)", transitionDelay: `${0.09 * i}s`, border: `1.5px solid ${hov ? "#6DBF3E" : "transparent"}`, boxShadow: hov ? "0 20px 56px rgba(0,0,0,0.16)" : "none" }}
+      style={{ background: hov ? "#1A1A1A" : "#F7F4EF", borderRadius: 22, padding: "clamp(28px,3vw,40px) clamp(22px,2.5vw,30px)", transition: "all 0.35s cubic-bezier(.22,.68,0,1.2)", cursor: "default", opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(32px)", transitionDelay: `${0.09 * i}s`, border: `1.5px solid ${hov ? "#ff6ce7" : "transparent"}`, boxShadow: hov ? "0 20px 56px rgba(0,0,0,0.16)" : "none" }}
     >
-      <div style={{ fontSize: 28, color: "#6DBF3E", marginBottom: 20 }}>{v.icon}</div>
+      <div style={{ fontSize: 28, color: "#ff6ce7", marginBottom: 20 }}>{v.icon}</div>
       <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: 19, fontWeight: 800, color: hov ? "#fff" : "#1A1A1A", marginBottom: 12, letterSpacing: "-0.3px", transition: "color 0.3s" }}>{v.title}</h3>
       <p style={{ fontSize: 14, lineHeight: 1.8, color: hov ? "rgba(255,255,255,0.6)" : "#777", transition: "color 0.3s", fontWeight: 500 }}>{v.desc}</p>
     </div>
@@ -299,8 +299,8 @@ function ValuesSection() {
     <section ref={ref} style={{ padding: "80px 5%", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 56, opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease" }}>
-          <div style={{ fontSize: 10, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>What Drives Us</div>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,3.8vw,52px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.5px" }}>Our core <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>values.</em></h2>
+          <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>What Drives Us</div>
+          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,3.8vw,52px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.5px" }}>Our core <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>values.</em></h2>
         </div>
         <div className="values-grid">
           {VALUES.map((v, i) => (
@@ -337,7 +337,7 @@ function TeamCard({ t, i, inView }: TeamCardProps) {
       </div>
       <div style={{ padding: "17px 20px" }}>
         <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 16, fontWeight: 800, color: "#1A1A1A", marginBottom: 3 }}>{t.name}</div>
-        <div style={{ fontSize: 12, fontWeight: 700, color: "#6DBF3E", letterSpacing: "0.5px" }}>{t.role}</div>
+        <div style={{ fontSize: 12, fontWeight: 700, color: "#ff6ce7", letterSpacing: "0.5px" }}>{t.role}</div>
       </div>
     </div>
   );
@@ -351,9 +351,9 @@ function TeamSection() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 56, flexWrap: "wrap", gap: 20 }}>
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease" }}>
-            <div style={{ fontSize: 10, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>The People</div>
+            <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>The People</div>
             <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,3.8vw,50px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
-              Meet the minds<br />behind the <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>magic.</em>
+              Meet the minds<br />behind the <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>magic.</em>
             </h2>
           </div>
           <p style={{ maxWidth: 320, color: "#666", lineHeight: 1.8, fontSize: 14, fontWeight: 500, opacity: inView ? 1 : 0, transition: "all 0.7s ease 0.15s" }}>
@@ -377,7 +377,7 @@ function CultureSection() {
     <section ref={ref} style={{ padding: "80px 5%", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 44, opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(20px)", transition: "all 0.7s ease" }}>
-          <div style={{ fontSize: 10, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 10 }}>Life at Kiwi</div>
+          <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 10 }}>Life at Kiwi</div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3vw,42px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1px" }}>We work hard. We celebrate harder.</h2>
         </div>
         <div
@@ -413,7 +413,7 @@ function CTASection() {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div
           className="cta-block"
-          style={{ background: "linear-gradient(135deg,#6DBF3E 0%,#3A8A1A 100%)", borderRadius: 28, position: "relative", overflow: "hidden", opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(36px)", transition: "all 0.9s cubic-bezier(.22,.68,0,1.2)" }}
+          style={{ background: "linear-gradient(135deg,#ff6ce7 0%,#8a41d0 100%)", borderRadius: 28, position: "relative", overflow: "hidden", opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(36px)", transition: "all 0.9s cubic-bezier(.22,.68,0,1.2)" }}
         >
           <div style={{ position: "absolute", top: "-30%", right: "20%", width: 360, height: 360, borderRadius: "50%", background: "radial-gradient(circle,rgba(255,255,255,0.12) 0%,transparent 70%)" }} />
           <div style={{ position: "absolute", bottom: "-40%", left: "10%", width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle,rgba(0,0,0,0.08) 0%,transparent 70%)" }} />
@@ -453,8 +453,8 @@ function Footer() {
     <footer style={{ background: "#111", padding: "40px 5% 24px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#6DBF3E,#A8E063)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16 }}>K</div>
-          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#6DBF3E" }}>Digital</span></span>
+          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#ff6ce7,#ba3aff)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16 }}>K</div>
+          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
         </div>
         <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>© 2025 Kiwi Connect Digital. All rights reserved.</div>
         <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>Crafted with ✦ in Mumbai</div>

@@ -8,7 +8,7 @@
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --kiwi-green: #6DBE4A;
-  --kiwi-lime: #A8E063;
+  --kiwi-lime: #ba3aff;
   --kiwi-dark: #080D08;
   --kiwi-charcoal: #121812;
   --kiwi-forest: #1A2B16;
@@ -54,7 +54,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #6DBE4A 0%, #A8E063 50%, #C5F27A 100%);
+  background: linear-gradient(135deg, #6DBE4A 0%, #ba3aff 50%, #C5F27A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -90,7 +90,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #A8E063, #6DBE4A);
+  background: linear-gradient(135deg, #ba3aff, #6DBE4A);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -111,7 +111,7 @@ body {
 
 .btn-outline {
   border: 1.5px solid rgba(109, 190, 74, 0.5);
-  color: #A8E063;
+  color: #ba3aff;
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -137,7 +137,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #A8E063;
+  color: #ba3aff;
 }
 
 .section-tag::before {

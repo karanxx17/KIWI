@@ -13,7 +13,7 @@ const SERVICES = [
     desc: "Build a strong social media presence with expert management services. We create engaging content, manage profiles, and run campaigns to boost engagement and grow your following across every platform.",
     features: ["Content Strategy & Calendar", "Profile Management", "Community Engagement", "Campaign Execution", "Analytics & Reporting"],
     img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=700&q=85",
-    accent: "#6DBF3E", light: "#EBF8D8",
+    accent: "#ff6ce7", light: "#EBF8D8",
   },
   {
     id: "seo", icon: "🔍", tag: "02",
@@ -94,7 +94,7 @@ const SERVICES = [
     desc: "Create a memorable brand identity with professional logo design and complete branding packages that make your business stand out, inspire trust, and communicate your story instantly.",
     features: ["Logo Design (3 Concepts)", "Brand Guidelines", "Colour & Typography System", "Business Card & Stationery", "Brand Asset Library"],
     img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=700&q=85",
-    accent: "#6DBF3E", light: "#EBF8D8",
+    accent: "#ff6ce7", light: "#EBF8D8",
   },
   {
     id: "email", icon: "📧", tag: "11",
@@ -172,14 +172,14 @@ function HeroSection() {
           top: p.top, bottom: p.bottom, left: p.left, right: p.right,
           background: "#fff", borderRadius: 100, padding: "9px 18px",
           border: "1.5px solid #D5EDBB", boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-          fontSize: 13, fontWeight: 700, color: "#3A7A18",
+          fontSize: 13, fontWeight: 700, color: "#b774db",
           opacity: loaded ? 1 : 0,
           transform: loaded ? `rotate(${p.rot})` : `rotate(${p.rot}) translateY(16px)`,
           transition: `all 0.8s cubic-bezier(.22,.68,0,1.2) ${p.delay}`,
           display: "flex", alignItems: "center", gap: 7,
           pointerEvents: "none",
         }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#6DBF3E", display: "inline-block", flexShrink: 0 }} />
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff6ce7", display: "inline-block", flexShrink: 0 }} />
           {p.label}
         </div>
       ))}
@@ -194,7 +194,7 @@ function HeroSection() {
         boxShadow: "0 2px 16px rgba(109,191,62,0.1)",
         position: "relative", zIndex: 1,
       }}>
-        <span style={{ fontSize: 12, fontWeight: 800, color: "#3A7A18", letterSpacing: "1.5px", textTransform: "uppercase" }}>11 Specialist Services</span>
+        <span style={{ fontSize: 12, fontWeight: 800, color: "#b774db", letterSpacing: "1.5px", textTransform: "uppercase" }}>11 Specialist Services</span>
       </div>
 
       <h1 style={{
@@ -206,7 +206,7 @@ function HeroSection() {
         color: "#141414", maxWidth: 860, marginBottom: 22,
         position: "relative", zIndex: 1,
       }}>
-        Every service you need<br />to <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>dominate</em> digital.
+        Every service you need<br />to <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>dominate</em> digital.
       </h1>
 
       <p style={{
@@ -225,12 +225,12 @@ function HeroSection() {
         display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center",
         position: "relative", zIndex: 1,
       }}>
-        <button style={{ padding: "14px 30px", borderRadius: 100, background: "#6DBF3E", color: "#fff", border: "none", fontSize: 15, fontWeight: 700, cursor: "pointer", boxShadow: "0 8px 28px rgba(109,191,62,0.38)", fontFamily: "'DM Sans',sans-serif", transition: "all 0.25s" }}
+        <button style={{ padding: "14px 30px", borderRadius: 100, background: "#ff6ce7", color: "#fff", border: "none", fontSize: 15, fontWeight: 700, cursor: "pointer", boxShadow: "0 8px 28px rgba(109,191,62,0.38)", fontFamily: "'DM Sans',sans-serif", transition: "all 0.25s" }}
           onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 14px 40px rgba(109,191,62,0.5)"; }}
           onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(109,191,62,0.38)"; }}
         >Get a Free Strategy Call →</button>
         <button style={{ padding: "14px 30px", borderRadius: 100, background: "transparent", color: "#1A1A1A", border: "2px solid #D0D0D0", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", transition: "all 0.25s" }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = "#6DBF3E"; e.currentTarget.style.color = "#6DBF3E"; }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff6ce7"; e.currentTarget.style.color = "#ff6ce7"; }}
           onMouseLeave={e => { e.currentTarget.style.borderColor = "#D0D0D0"; e.currentTarget.style.color = "#1A1A1A"; }}
         >View All Services ↓</button>
       </div>
@@ -317,9 +317,9 @@ function ServicesGrid() {
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 44, flexWrap: "wrap", gap: 20, opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(20px)", transition: "all 0.7s ease" }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 10 }}>What We Offer</div>
+            <div style={{ fontSize: 11, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 10 }}>What We Offer</div>
             <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(26px,3.5vw,46px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
-              Our specialist<br /><em style={{ fontStyle: "italic", color: "#6DBF3E" }}>services.</em>
+              Our specialist<br /><em style={{ fontStyle: "italic", color: "#ff6ce7" }}>services.</em>
             </h2>
           </div>
 
@@ -348,9 +348,9 @@ function ProcessSection() {
       <div style={{ position: "absolute", top: "-20%", right: "10%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle,rgba(109,191,62,0.1) 0%,transparent 65%)", pointerEvents: "none" }} />
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 72, opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease" }}>
-          <div style={{ fontSize: 11, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 14 }}>How We Work</div>
+          <div style={{ fontSize: 11, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 14 }}>How We Work</div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(26px,3.5vw,50px)", fontWeight: 800, color: "#fff", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
-            From brief to breakthrough<br />in <em style={{ fontStyle: "italic", color: "#A8E063" }}>4 focused steps.</em>
+            From brief to breakthrough<br />in <em style={{ fontStyle: "italic", color: "#ba3aff" }}>4 focused steps.</em>
           </h2>
         </div>
 
@@ -360,8 +360,8 @@ function ProcessSection() {
             return (
               <div key={i} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
                 style={{ padding: "0 20px", opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(28px)", transition: `all 0.7s cubic-bezier(.22,.68,0,1.2) ${0.12 * i}s`, position: "relative", zIndex: 1 }}>
-                <div style={{ width: 68, height: 68, borderRadius: "50%", background: hov ? "#6DBF3E" : "#2A2A2A", border: `2px solid ${hov ? "#6DBF3E" : "#3A3A3A"}`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, transition: "all 0.35s", boxShadow: hov ? "0 0 0 8px rgba(109,191,62,0.15)" : "none" }}>
-                  <span style={{ fontFamily: "'Syne',sans-serif", fontSize: 17, fontWeight: 800, color: hov ? "#fff" : "#6DBF3E" }}>{p.step}</span>
+                <div style={{ width: 68, height: 68, borderRadius: "50%", background: hov ? "#ff6ce7" : "#2A2A2A", border: `2px solid ${hov ? "#ff6ce7" : "#3A3A3A"}`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, transition: "all 0.35s", boxShadow: hov ? "0 0 0 8px rgba(109,191,62,0.15)" : "none" }}>
+                  <span style={{ fontFamily: "'Syne',sans-serif", fontSize: 17, fontWeight: 800, color: hov ? "#fff" : "#ff6ce7" }}>{p.step}</span>
                 </div>
                 <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: 19, fontWeight: 800, color: "#fff", marginBottom: 12, letterSpacing: "-0.3px" }}>{p.title}</h3>
                 <p style={{ fontSize: 14, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{p.desc}</p>
@@ -385,9 +385,9 @@ function SpotlightSection() {
     <section ref={ref} style={{ padding: "100px 5%", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48, opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(20px)", transition: "all 0.7s ease" }}>
-          <div style={{ fontSize: 11, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>Deep Dives</div>
+          <div style={{ fontSize: 11, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>Deep Dives</div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(26px,3.2vw,44px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.2px" }}>
-            Our most-requested <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>services.</em>
+            Our most-requested <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>services.</em>
           </h2>
         </div>
 
@@ -452,16 +452,16 @@ function CTASection() {
             <div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
                 {["SEO", "Social Media", "Ads", "Content", "Video", "Web"].map(t => (
-                  <span key={t} style={{ padding: "5px 14px", borderRadius: 100, background: "rgba(109,191,62,0.15)", border: "1px solid rgba(109,191,62,0.3)", fontSize: 12, fontWeight: 700, color: "#A8E063" }}>{t}</span>
+                  <span key={t} style={{ padding: "5px 14px", borderRadius: 100, background: "rgba(109,191,62,0.15)", border: "1px solid rgba(109,191,62,0.3)", fontSize: 12, fontWeight: 700, color: "#ba3aff" }}>{t}</span>
                 ))}
               </div>
               <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3.2vw,44px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-1px", marginBottom: 14 }}>
-                Not sure which services<br />you <em style={{ fontStyle: "italic", color: "#A8E063" }}>actually need?</em>
+                Not sure which services<br />you <em style={{ fontStyle: "italic", color: "#ba3aff" }}>actually need?</em>
               </h2>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Book a free 30-minute strategy call. We'll audit your current presence and recommend exactly what will move the needle.</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
-              <button style={{ padding: "16px 36px", borderRadius: 100, background: "#6DBF3E", color: "#fff", border: "none", fontSize: 15, fontWeight: 800, cursor: "pointer", boxShadow: "0 8px 32px rgba(109,191,62,0.4)", fontFamily: "'DM Sans',sans-serif", whiteSpace: "nowrap", transition: "all 0.25s" }}
+              <button style={{ padding: "16px 36px", borderRadius: 100, background: "#ff6ce7", color: "#fff", border: "none", fontSize: 15, fontWeight: 800, cursor: "pointer", boxShadow: "0 8px 32px rgba(109,191,62,0.4)", fontFamily: "'DM Sans',sans-serif", whiteSpace: "nowrap", transition: "all 0.25s" }}
                 onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; }}
               >Book Free Strategy Call →</button>
@@ -483,8 +483,8 @@ function Footer() {
     <footer style={{ background: "#111", padding: "40px 5% 24px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#6DBF3E,#A8E063)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16, fontFamily: "'Syne',sans-serif" }}>K</div>
-          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#6DBF3E" }}>Digital</span></span>
+          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#ff6ce7,#ba3aff)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16, fontFamily: "'Syne',sans-serif" }}>K</div>
+          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
         </div>
         <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>© 2025 Kiwi Connect Digital. All rights reserved.</div>
         <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>Crafted with ✦ in Mumbai</div>

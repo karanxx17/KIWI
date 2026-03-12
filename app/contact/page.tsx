@@ -12,7 +12,7 @@ const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(WA_LINK)}&bgcolor=ffffff&color=1A1A1A&margin=10`;
 
 const CONTACT_INFO = [
-  { icon: "📍", label: "Office Address", lines: ["4th Floor, Inspire Hub,", "Bandra Kurla Complex,", "Mumbai — 400 051, India"], accent: "#6DBF3E", light: "#EBF8D8", action: null },
+  { icon: "📍", label: "Office Address", lines: ["4th Floor, Inspire Hub,", "Bandra Kurla Complex,", "Mumbai — 400 051, India"], accent: "#ff6ce7", light: "#EBF8D8", action: null },
   { icon: "📞", label: "Call / WhatsApp", lines: ["+91 98765 43210", "+91 98765 43211"], accent: "#3B82F6", light: "#EFF6FF", action: { label: "Call Now", href: "tel:+919876543210" } },
   { icon: "✉️", label: "Email Us", lines: ["hello@kiwiconnect.in", "support@kiwiconnect.in"], accent: "#F97316", light: "#FFF7ED", action: { label: "Send Email", href: "mailto:hello@kiwiconnect.in" } },
   { icon: "🕐", label: "Working Hours", lines: ["Mon – Sat: 9:00 AM – 7:00 PM", "Sun: By Appointment Only"], accent: "#8B5CF6", light: "#F5F3FF", action: null },
@@ -65,12 +65,12 @@ function HeroSection() {
       <div style={{ position: "absolute", bottom: "-10%", left: "-4%", width: "min(380px,50vw)", height: "min(380px,50vw)", borderRadius: "50%", background: "radial-gradient(circle,rgba(109,191,62,0.08) 0%,transparent 65%)", pointerEvents: "none" }} />
 
       <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(18px)", transition: "all 0.7s cubic-bezier(.22,.68,0,1.2)", display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", border: "1.5px solid #C8EBAA", borderRadius: 100, padding: "7px 20px", marginBottom: 28, boxShadow: "0 2px 16px rgba(109,191,62,0.1)", position: "relative", zIndex: 1 }}>
-        <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#6DBF3E", display: "inline-block", animation: "blink 2s infinite" }} />
-        <span style={{ fontSize: 12, fontWeight: 800, color: "#3A7A18", letterSpacing: "1.5px", textTransform: "uppercase" }}>We respond within 2 hours</span>
+        <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff6ce7", display: "inline-block", animation: "blink 2s infinite" }} />
+        <span style={{ fontSize: 12, fontWeight: 800, color: "#b774db", letterSpacing: "1.5px", textTransform: "uppercase" }}>We respond within 2 hours</span>
       </div>
 
       <h1 style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(28px)", transition: "all 0.8s cubic-bezier(.22,.68,0,1.2) 0.1s", fontFamily: "'Syne',sans-serif", fontSize: "clamp(36px,6vw,82px)", fontWeight: 800, lineHeight: 1.05, letterSpacing: "-3px", color: "#141414", maxWidth: 820, marginBottom: 22, position: "relative", zIndex: 1 }}>
-        Let's build something<br /><em style={{ fontStyle: "italic", color: "#6DBF3E" }}>great together.</em>
+        Let's build something<br /><em style={{ fontStyle: "italic", color: "#ff6ce7" }}>great together.</em>
       </h1>
 
       <p style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(18px)", transition: "all 0.8s cubic-bezier(.22,.68,0,1.2) 0.2s", fontSize: "clamp(14px,1.6vw,18px)", color: "#5A5A5A", maxWidth: 520, lineHeight: 1.75, fontWeight: 500, position: "relative", zIndex: 1 }}>
@@ -112,7 +112,7 @@ function WhatsAppQR({ inView }: { inView: boolean }) {
       <div className="wa-inner">
         {/* QR */}
         <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-          style={{ flexShrink: 0, background: "#fff", borderRadius: 16, padding: 9, boxShadow: "0 8px 32px rgba(0,0,0,0.3)", border: "3px solid #6DBF3E", transition: "transform 0.3s", transform: hov ? "scale(1.03)" : "scale(1)" }}>
+          style={{ flexShrink: 0, background: "#fff", borderRadius: 16, padding: 9, boxShadow: "0 8px 32px rgba(0,0,0,0.3)", border: "3px solid #ff6ce7", transition: "transform 0.3s", transform: hov ? "scale(1.03)" : "scale(1)" }}>
           <img src={QR_URL} alt="WhatsApp QR" width={100} height={100} style={{ display: "block", borderRadius: 9 }} />
           <div style={{ textAlign: "center", marginTop: 5 }}><span style={{ fontSize: 9, fontWeight: 800, color: "#25D366", letterSpacing: "0.5px" }}>SCAN TO CHAT</span></div>
         </div>
@@ -131,7 +131,7 @@ function WhatsAppQR({ inView }: { inView: boolean }) {
               onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; }}
             >Open WhatsApp</a>
             <button onClick={copyLink}
-              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "9px 18px", borderRadius: 100, background: copied ? "#6DBF3E" : "rgba(255,255,255,0.1)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.15)", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", transition: "all 0.3s" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "9px 18px", borderRadius: 100, background: copied ? "#ff6ce7" : "rgba(255,255,255,0.1)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.15)", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", transition: "all 0.3s" }}
             >{copied ? "✓ Copied!" : "Copy Link"}</button>
           </div>
         </div>
@@ -151,7 +151,7 @@ function MapCard({ inView }: { inView: boolean }) {
           <div style={{ fontSize: 12, color: "#888", fontWeight: 500, marginTop: 2 }}>BKC, Mumbai — 400 051</div>
         </div>
         <a href="https://maps.google.com/?q=Bandra+Kurla+Complex+Mumbai" target="_blank" rel="noreferrer"
-          style={{ padding: "7px 16px", borderRadius: 100, background: "#6DBF3E", color: "#fff", fontSize: 12, fontWeight: 700, textDecoration: "none", fontFamily: "'DM Sans',sans-serif", boxShadow: "0 4px 14px rgba(109,191,62,0.35)", transition: "all 0.25s", whiteSpace: "nowrap" }}
+          style={{ padding: "7px 16px", borderRadius: 100, background: "#ff6ce7", color: "#fff", fontSize: 12, fontWeight: 700, textDecoration: "none", fontFamily: "'DM Sans',sans-serif", boxShadow: "0 4px 14px rgba(109,191,62,0.35)", transition: "all 0.25s", whiteSpace: "nowrap" }}
           onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; }}
           onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; }}
         >Get Directions →</a>
@@ -189,7 +189,7 @@ function ContactForm({ inView }: { inView: boolean }) {
 
   const iStyle = (field: string | null) => ({
     width: "100%", padding: "13px 16px", borderRadius: 12,
-    border: `1.5px solid ${field && errors[field as keyof FormType] ? "#EF4444" : focused === field ? "#6DBF3E" : "#E2DDD6"}`,
+    border: `1.5px solid ${field && errors[field as keyof FormType] ? "#EF4444" : focused === field ? "#ff6ce7" : "#E2DDD6"}`,
     background: focused === field ? "#FAFFF5" : "#FAFAF7",
     fontSize: 14, color: "#1A1A1A", fontWeight: 500,
     fontFamily: "'DM Sans',sans-serif", outline: "none", transition: "all 0.25s",
@@ -202,10 +202,10 @@ function ContactForm({ inView }: { inView: boolean }) {
   if (submitted) {
     return (
       <div style={{ background: "#fff", borderRadius: 28, padding: "60px 40px", boxShadow: "0 8px 48px rgba(0,0,0,0.08)", border: "1.5px solid #EAE6E0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: 460, opacity: inView ? 1 : 0, transition: "all 0.7s ease" }}>
-        <div style={{ width: 80, height: 80, borderRadius: "50%", background: "linear-gradient(135deg,#6DBF3E,#A8E063)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 36, marginBottom: 24, boxShadow: "0 12px 40px rgba(109,191,62,0.35)", animation: "popIn 0.5s cubic-bezier(.22,.68,0,1.4)" }}>✓</div>
+        <div style={{ width: 80, height: 80, borderRadius: "50%", background: "linear-gradient(135deg,#ff6ce7,#ba3aff)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 36, marginBottom: 24, boxShadow: "0 12px 40px rgba(109,191,62,0.35)", animation: "popIn 0.5s cubic-bezier(.22,.68,0,1.4)" }}>✓</div>
         <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: 28, fontWeight: 800, color: "#1A1A1A", marginBottom: 12, letterSpacing: "-0.8px" }}>Message Received! 🎉</h2>
         <p style={{ fontSize: 15, color: "#666", lineHeight: 1.75, fontWeight: 500, maxWidth: 360, marginBottom: 32 }}>
-          Thank you, <strong style={{ color: "#1A1A1A" }}>{form.firstName}</strong>! Our team will reach out within <strong style={{ color: "#6DBF3E" }}>2 business hours</strong>.
+          Thank you, <strong style={{ color: "#1A1A1A" }}>{form.firstName}</strong>! Our team will reach out within <strong style={{ color: "#ff6ce7" }}>2 business hours</strong>.
         </p>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
           <a href={WA_LINK} target="_blank" rel="noreferrer" style={{ padding: "12px 24px", borderRadius: 100, background: "#25D366", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 800, fontFamily: "'DM Sans',sans-serif", boxShadow: "0 6px 20px rgba(37,211,102,0.3)" }}>Chat on WhatsApp →</a>
@@ -219,7 +219,7 @@ function ContactForm({ inView }: { inView: boolean }) {
     <div style={{ background: "#fff", borderRadius: 28, padding: "clamp(28px,4vw,48px) clamp(24px,4vw,48px)", boxShadow: "0 8px 48px rgba(0,0,0,0.08)", border: "1.5px solid #EAE6E0", opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(32px)", transition: "all 0.9s cubic-bezier(.22,.68,0,1.2) 0.1s" }}>
       {/* Header */}
       <div style={{ marginBottom: 28 }}>
-        <div style={{ fontSize: 10, fontWeight: 800, color: "#6DBF3E", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 8 }}>Start the conversation</div>
+        <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 8 }}>Start the conversation</div>
         <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(22px,2.5vw,28px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-0.8px", marginBottom: 6 }}>Tell us about your project</h2>
         <p style={{ fontSize: 13, color: "#888", fontWeight: 500 }}>Free strategy call included. No commitment. No spam, ever.</p>
       </div>
@@ -263,7 +263,7 @@ function ContactForm({ inView }: { inView: boolean }) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
           {SERVICES_LIST.map(svc => (
             <button key={svc} onClick={() => { setForm({ ...form, service: svc }); setErrors({ ...errors, service: "" }); }}
-              style={{ padding: "7px 14px", borderRadius: 100, border: "none", cursor: "pointer", background: form.service === svc ? "#6DBF3E" : "#F2EFE9", color: form.service === svc ? "#fff" : "#555", fontSize: 12, fontWeight: 700, fontFamily: "'DM Sans',sans-serif", transition: "all 0.2s", boxShadow: form.service === svc ? "0 4px 14px rgba(109,191,62,0.35)" : "none" }}
+              style={{ padding: "7px 14px", borderRadius: 100, border: "none", cursor: "pointer", background: form.service === svc ? "#ff6ce7" : "#F2EFE9", color: form.service === svc ? "#fff" : "#555", fontSize: 12, fontWeight: 700, fontFamily: "'DM Sans',sans-serif", transition: "all 0.2s", boxShadow: form.service === svc ? "0 4px 14px rgba(109,191,62,0.35)" : "none" }}
             >{svc}</button>
           ))}
         </div>
@@ -294,9 +294,9 @@ function ContactForm({ inView }: { inView: boolean }) {
 
       {/* Submit */}
       <button onClick={handleSubmit} disabled={loading}
-        style={{ width: "100%", padding: "17px 32px", borderRadius: 14, border: "none", background: loading ? "#A8E063" : "linear-gradient(135deg,#6DBF3E,#5AAD30)", color: "#fff", fontSize: 15, fontWeight: 800, cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans',sans-serif", boxShadow: "0 8px 32px rgba(109,191,62,0.38)", transition: "all 0.3s", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}
-        onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 14px 44px rgba(109,191,62,0.5)"; } }}
-        onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(109,191,62,0.38)"; }}
+        style={{ width: "100%", padding: "17px 32px", borderRadius: 14, border: "none", background: loading ? "#ba3aff" : "linear-gradient(135deg,#ff6ce7,#b774db)", color: "#fff", fontSize: 15, fontWeight: 800, cursor: loading ? "not-allowed" : "pointer", fontFamily: "'DM Sans',sans-serif", boxShadow: "0 8px 32px rgba(109,191,62,0.38)", transition: "all 0.3s", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}
+        onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 14px 44px rgba(233, 17, 146, 0.5)"; } }}
+        onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(190, 26, 147, 0.38)"; }}
       >
         {loading ? (
           <><span style={{ width: 17, height: 17, border: "2.5px solid rgba(255,255,255,0.4)", borderTopColor: "#fff", borderRadius: "50%", display: "inline-block", animation: "spin 0.7s linear infinite" }} />Sending your message…</>
@@ -339,8 +339,8 @@ function Footer() {
     <footer style={{ background: "#111", padding: "40px 5% 24px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#6DBF3E,#A8E063)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16 }}>K</div>
-          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#6DBF3E" }}>Digital</span></span>
+          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#ff6ce7,#ba3aff)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16 }}>K</div>
+          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
         </div>
         <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>© 2025 Kiwi Connect Digital. All rights reserved.</div>
         <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>Crafted with ✦ in Mumbai</div>

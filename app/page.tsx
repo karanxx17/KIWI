@@ -146,7 +146,7 @@ function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.1): [Re
 //         {/* Logo */}
 //         <div className="navbar__logo">
 //           <div className="navbar__logo-icon">K</div>
-//           <span className="navbar__logo-text">Kiwi Connect <span style={{ color: "#6DBF3E" }}>Digital</span></span>
+//           <span className="navbar__logo-text">Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
 //         </div>
 
 //         {/* Desktop links */}
@@ -203,7 +203,7 @@ function HeroSection() {
 
       <h1 className={`hero__headline${loaded ? " hero__headline--in" : ""}`}>
         Marketing That<br />
-        <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>Actually Grows</em><br />
+        <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>Actually Grows</em><br />
         Your Business.
       </h1>
 
@@ -221,7 +221,7 @@ function HeroSection() {
         <div className="hero__grid-main">
           <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85" alt="Team" className="hero__grid-img" />
           <div className="hero__grid-caption">
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#6DBF3E", letterSpacing: "0.5px", textTransform: "uppercase" }}>STRATEGY & VISION</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#ff6ce7", letterSpacing: "0.5px", textTransform: "uppercase" }}>STRATEGY & VISION</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#1A1A1A" }}>Building brands that last</div>
           </div>
         </div>
@@ -266,7 +266,7 @@ function ServicesSection() {
           <div className={`services__header-left${inView ? " fade-in" : ""}`}>
             <div className="eyebrow">What We Do</div>
             <h2 className="heading-lg">
-              Services built for<br /><em style={{ fontStyle: "italic", color: "#6DBF3E" }}>real results.</em>
+              Services built for<br /><em style={{ fontStyle: "italic", color: "#ff6ce7" }}>real results.</em>
             </h2>
           </div>
           <p className={`services__header-desc${inView ? " fade-in fade-in--delay" : ""}`}>
@@ -373,7 +373,7 @@ function AboutSection() {
           <div className={`about__text${inView ? " about__text--in" : ""}`}>
             <div className="eyebrow">About Kiwi Connect</div>
             <h2 className="heading-lg">
-              We're not just an agency.<br />We're your <em style={{ fontStyle: "italic", color: "#6DBF3E" }}>growth partners.</em>
+              We're not just an agency.<br />We're your <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>growth partners.</em>
             </h2>
             <p className="body-text">
               Founded in 2007, Kiwi Connect Digital has spent 17 years at the intersection of strategy, creativity, and technology. We've worked with startups and Fortune 500s, local heroes and global brands.
@@ -482,7 +482,7 @@ function CTASection() {
             <div className="eyebrow eyebrow--green">Ready to scale?</div>
             <h2 className="heading-lg heading--white">
               Let's build something<br />
-              <em style={{ fontStyle: "italic", color: "#A8E063" }}>extraordinary together.</em>
+              <em style={{ fontStyle: "italic", color: "#ba3aff" }}>extraordinary together.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", fontWeight: 500, marginTop: 12 }}>
               Free strategy audit included. No commitment required.
@@ -515,7 +515,7 @@ function Footer() {
           <div className="footer__brand">
             <div className="footer__logo">
               <div className="footer__logo-icon">K</div>
-              <span className="footer__logo-text">Kiwi Connect <span style={{ color: "#6DBF3E" }}>Digital</span></span>
+              <span className="footer__logo-text">Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
             </div>
             <p className="footer__tagline">Growth-driven marketing for ambitious brands. 17 years. 340+ clients. Counting.</p>
           </div>
@@ -566,10 +566,10 @@ export default function KiwiConnectDigital() {
         @media (min-width: 768px) { .section { padding: 120px 0; } }
 
         .eyebrow {
-          font-size: 12px; font-weight: 800; color: #6DBF3E;
+          font-size: 12px; font-weight: 800; color: #ff6ce7;
           letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
         }
-        .eyebrow--green { color: #6DBF3E; }
+        .eyebrow--green { color: #ff6ce7; }
 
         .heading-lg {
           font-family: 'Syne', sans-serif;
@@ -596,7 +596,7 @@ export default function KiwiConnectDigital() {
         @media (min-width: 480px) { .btn { padding: 16px 36px; font-size: 15px; } }
 
         .btn--primary {
-          background: #6DBF3E; color: #fff;
+          background: #ff6ce7; color: #fff;
           box-shadow: 0 8px 32px rgba(109,191,62,0.38);
         }
         .btn--primary:hover {
@@ -607,7 +607,7 @@ export default function KiwiConnectDigital() {
           background: transparent; color: #1A1A1A;
           border: 2px solid #D0D0D0;
         }
-        .btn--outline:hover { border-color: #6DBF3E; color: #6DBF3E; }
+        .btn--outline:hover { border-color: #ff6ce7; color: #ff6ce7; }
 
         .btn--ghost {
           background: transparent; color: rgba(255,255,255,0.7);
@@ -633,7 +633,7 @@ export default function KiwiConnectDigital() {
         .navbar__logo { display: flex; align-items: center; gap: 10px; }
         .navbar__logo-icon {
           width: 32px; height: 32px; border-radius: 9px;
-          background: linear-gradient(135deg, #6DBF3E, #A8E063);
+          background: linear-gradient(135deg, #ff6ce7, #ba3aff);
           display: flex; align-items: center; justify-content: center;
           font-weight: 900; color: #fff; font-size: 16px; flex-shrink: 0;
         }
@@ -650,7 +650,7 @@ export default function KiwiConnectDigital() {
           font-size: 14px; font-weight: 600; color: #3A3A3A;
           text-decoration: none; transition: color 0.2s;
         }
-        .navbar__link:hover { color: #6DBF3E; }
+        .navbar__link:hover { color: #ff6ce7; }
 
         .navbar__cta {
           display: none;
@@ -660,7 +660,7 @@ export default function KiwiConnectDigital() {
           transition: all 0.25s; font-family: 'DM Sans', sans-serif;
         }
         @media (min-width: 768px) { .navbar__cta { display: block; } }
-        .navbar__cta:hover { background: #6DBF3E; }
+        .navbar__cta:hover { background: #ff6ce7; }
 
         .navbar__cta--mobile {
           display: block; width: 100%; margin-top: 8px;
@@ -703,7 +703,7 @@ export default function KiwiConnectDigital() {
           border-bottom: 1px solid #F0EDE8;
           transition: color 0.2s;
         }
-        .navbar__mobile-link:hover { color: #6DBF3E; }
+        .navbar__mobile-link:hover { color: #ff6ce7; }
 
         /* ── HERO ──────────────────────────── */
         .hero {
@@ -738,14 +738,14 @@ export default function KiwiConnectDigital() {
           box-shadow: 0 2px 16px rgba(109,191,62,0.12);
           opacity: 0; transform: translateY(20px);
           transition: all 0.7s cubic-bezier(.22,.68,0,1.2);
-          font-size: 12px; font-weight: 700; color: #3A7A18; letter-spacing: 0.4px;
+          font-size: 12px; font-weight: 700; color: #b774db; letter-spacing: 0.4px;
           position: relative; z-index: 1;
         }
         @media (min-width: 480px) { .hero__badge { font-size: 13px; } }
         .hero__badge--in { opacity: 1; transform: translateY(0); }
         .hero__badge-dot {
           width: 8px; height: 8px; border-radius: 50%;
-          background: #6DBF3E; display: inline-block;
+          background: #ff6ce7; display: inline-block;
           animation: pulse 2s infinite; flex-shrink: 0;
         }
 
@@ -827,7 +827,7 @@ export default function KiwiConnectDigital() {
         }
         .hero__grid-stat {
           border-radius: 16px; overflow: hidden;
-          background: linear-gradient(135deg, #6DBF3E, #A8E063);
+          background: linear-gradient(135deg, #ff6ce7, #ba3aff);
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
           padding: 16px;
@@ -865,7 +865,7 @@ export default function KiwiConnectDigital() {
         .stats__value {
           font-family: 'Syne', sans-serif;
           font-size: clamp(32px, 4vw, 56px);
-          font-weight: 800; color: #6DBF3E; line-height: 1;
+          font-weight: 800; color: #ff6ce7; line-height: 1;
         }
         .stats__label {
           font-size: 12px; color: rgba(255,255,255,0.55);
@@ -917,14 +917,14 @@ export default function KiwiConnectDigital() {
         @media (min-width: 768px) { .service-card { padding: 36px 32px; } }
         .service-card--in { opacity: 1; transform: translateY(0); }
         .service-card--hov {
-          background: #1A1A1A; border-color: #6DBF3E;
+          background: #1A1A1A; border-color: #ff6ce7;
           box-shadow: 0 20px 60px rgba(0,0,0,0.18);
         }
         .service-card__top {
           display: flex; justify-content: space-between;
           align-items: flex-start; margin-bottom: 20px;
         }
-        .service-card__icon { font-size: 26px; color: #6DBF3E; }
+        .service-card__icon { font-size: 26px; color: #ff6ce7; }
         .service-card__tag {
           font-size: 11px; font-weight: 800;
           color: #CCC; letter-spacing: 1px;
@@ -948,7 +948,7 @@ export default function KiwiConnectDigital() {
           color: #1A1A1A; display: flex; align-items: center; gap: 6px;
           transition: color 0.3s;
         }
-        .service-card--hov .service-card__link { color: #6DBF3E; }
+        .service-card--hov .service-card__link { color: #ff6ce7; }
         .service-card__arrow { transition: transform 0.3s; display: inline-block; }
         .service-card__arrow--hov { transform: translateX(4px); }
 
@@ -997,7 +997,7 @@ export default function KiwiConnectDigital() {
         }
         @media (min-width: 768px) { .work-card__content { padding: 28px 32px; } }
         .work-card__category {
-          font-size: 10px; font-weight: 800; color: #A8E063;
+          font-size: 10px; font-weight: 800; color: #ba3aff;
           letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;
         }
         @media (min-width: 480px) { .work-card__category { font-size: 11px; } }
@@ -1010,7 +1010,7 @@ export default function KiwiConnectDigital() {
         }
         @media (min-width: 768px) { .work-card__client { font-size: 24px; } }
         .work-card__result {
-          background: #6DBF3E; color: #fff;
+          background: #ff6ce7; color: #fff;
           padding: 6px 12px; border-radius: 100px;
           font-size: 11px; font-weight: 800; flex-shrink: 0;
           opacity: 0; transform: translateY(8px);
@@ -1056,7 +1056,7 @@ export default function KiwiConnectDigital() {
 
         .about__badge {
           position: absolute; top: 40%; right: 8%;
-          background: #6DBF3E; border-radius: 14px; padding: 16px 20px;
+          background: #ff6ce7; border-radius: 14px; padding: 16px 20px;
           box-shadow: 0 12px 40px rgba(109,191,62,0.45);
         }
 
@@ -1077,7 +1077,7 @@ export default function KiwiConnectDigital() {
         .pillar { display: flex; gap: 12px; align-items: flex-start; }
         .pillar__dot {
           width: 20px; height: 20px; border-radius: 50%;
-          background: #E8F7D8; border: 2px solid #6DBF3E;
+          background: #E8F7D8; border: 2px solid #ff6ce7;
           flex-shrink: 0; margin-top: 2px;
         }
         .pillar__title { font-size: 14px; font-weight: 800; color: #1A1A1A; }
@@ -1126,7 +1126,7 @@ export default function KiwiConnectDigital() {
         .testimonial--in { opacity: 1; transform: translateY(0); }
 
         .testimonial__quote-mark {
-          font-size: 72px; color: #6DBF3E; line-height: 0.6;
+          font-size: 72px; color: #ff6ce7; line-height: 0.6;
           margin-bottom: 28px; font-family: Georgia, serif; opacity: 0.4;
         }
         .testimonial__text {
@@ -1140,7 +1140,7 @@ export default function KiwiConnectDigital() {
         }
         .testimonial__avatar {
           width: 44px; height: 44px; border-radius: 50%;
-          object-fit: cover; border: 3px solid #6DBF3E; flex-shrink: 0;
+          object-fit: cover; border: 3px solid #ff6ce7; flex-shrink: 0;
         }
         @media (min-width: 640px) { .testimonial__avatar { width: 48px; height: 48px; } }
         .testimonial__name { font-weight: 800; font-size: 14px; color: #1A1A1A; }
@@ -1155,7 +1155,7 @@ export default function KiwiConnectDigital() {
           background: #DDD; border: none; cursor: pointer;
           transition: all 0.3s;
         }
-        .testimonial__dot--active { width: 28px; background: #6DBF3E; }
+        .testimonial__dot--active { width: 28px; background: #ff6ce7; }
 
         /* ── CTA ───────────────────────────── */
         .cta-block {
@@ -1221,7 +1221,7 @@ export default function KiwiConnectDigital() {
         }
         .footer__logo-icon {
           width: 32px; height: 32px; border-radius: 9px;
-          background: linear-gradient(135deg, #6DBF3E, #A8E063);
+          background: linear-gradient(135deg, #ff6ce7, #ba3aff);
           display: flex; align-items: center; justify-content: center;
           font-weight: 900; color: #fff; font-size: 16px; flex-shrink: 0;
         }
@@ -1234,7 +1234,7 @@ export default function KiwiConnectDigital() {
           line-height: 1.8; font-weight: 500; max-width: 260px;
         }
         .footer__col-title {
-          font-size: 11px; font-weight: 800; color: #6DBF3E;
+          font-size: 11px; font-weight: 800; color: #ff6ce7;
           letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;
         }
         .footer__col-item {

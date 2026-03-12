@@ -33,7 +33,7 @@ export default function Navbar({ activePage = "" }) {
           letter-spacing: 0.2px;
           transition: color 0.2s;
         }
-        .kcd-nav-link:hover { color: #6DBF3E !important; }
+        .kcd-nav-link:hover { color: #ff6ce7 !important; }
 
         .kcd-cta-btn {
           padding: 10px 22px;
@@ -50,7 +50,7 @@ export default function Navbar({ activePage = "" }) {
           white-space: nowrap;
         }
         .kcd-cta-btn:hover {
-          background: #6DBF3E !important;
+          background: #ff6ce7 !important;
           transform: scale(1.04);
         }
 
@@ -115,8 +115,8 @@ export default function Navbar({ activePage = "" }) {
           transition: color 0.2s;
         }
         .kcd-mobile-link:last-of-type { border-bottom: none; }
-        .kcd-mobile-link:hover { color: #6DBF3E; }
-        .kcd-mobile-link.active { color: #6DBF3E; }
+        .kcd-mobile-link:hover { color: #ff6ce7; }
+        .kcd-mobile-link.active { color: #ff6ce7; }
         .kcd-mobile-cta {
           margin-top: 16px;
           padding: 15px 24px;
@@ -131,7 +131,7 @@ export default function Navbar({ activePage = "" }) {
           width: 100%;
           transition: background 0.25s;
         }
-        .kcd-mobile-cta:hover { background: #6DBF3E; }
+        .kcd-mobile-cta:hover { background: #ff6ce7; }
 
         @media (max-width: 768px) {
           .kcd-desktop-links { display: none !important; }
@@ -156,7 +156,7 @@ export default function Navbar({ activePage = "" }) {
         <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
           <div style={{
             width: 36, height: 36, borderRadius: 10,
-            background: "linear-gradient(135deg, #6DBF3E, #A8E063)",
+            background: "linear-gradient(135deg, #ff6ce7, #ba3aff)",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 18, fontWeight: 900, color: "#fff",
             boxShadow: "0 4px 16px rgba(109,191,62,0.35)",
@@ -168,7 +168,7 @@ export default function Navbar({ activePage = "" }) {
             fontSize: 17, color: "#1A1A1A", letterSpacing: "-0.3px",
           }}>
             Kiwi Connect{" "}
-            <span style={{ color: "#6DBF3E" }}>Digital</span>
+            <span style={{ color: "#ff6ce7" }}>Digital</span>
           </span>
         </a>
 
@@ -181,7 +181,7 @@ export default function Navbar({ activePage = "" }) {
                 key={link}
                 href={`/${link.toLowerCase()}`}
                 className="kcd-nav-link"
-                style={{ color: isActive ? "#6DBF3E" : "#3A3A3A" }}
+                style={{ color: isActive ? "#ff6ce7" : "#3A3A3A" }}
               >
                 {link}
               </a>
