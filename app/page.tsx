@@ -373,6 +373,68 @@ function AboutSection() {
 }
 
 // ─────────────────────────────────────────
+// Employees / Team
+// ─────────────────────────────────────────
+interface Employee {
+  _id: string;
+  name: string;
+  role: string;
+  image?: string;
+  bio?: string;
+}
+
+function EmployeesSection() {
+  const [ref, inView] = useInView();
+  const [employees, setEmployees] = useState<Employee[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/employees")
+      .then((res) => res.json())
+      .then((data) => setEmployees(data))
+      .catch((err) => console.error("Error fetching employees:", err));
+  }, []);
+
+  if (!employees || employees.length === 0) return null;
+
+  return (
+    <section id="team" ref={ref} className="section section--light">
+      <div className="container">
+        <div className={`text-center mb-lg${inView ? " fade-in" : ""}`}>
+          <div className="eyebrow">Our Team</div>
+          <h2 className="heading-lg">The minds behind the magic.</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
+          {employees.map((emp, i) => (
+            <div 
+              key={emp._id} 
+              style={{
+                background: '#fff',
+                borderRadius: '20px',
+                padding: '30px',
+                textAlign: 'center',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                transform: inView ? 'translateY(0)' : 'translateY(20px)',
+                opacity: inView ? 1 : 0,
+                transition: `all 0.6s ease ${i * 0.1}s`
+              }}
+            >
+              <img 
+                src={emp.image || "https://via.placeholder.com/150"} 
+                alt={emp.name} 
+                style={{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 20px', border: '3px solid #ff6ce7' }} 
+              />
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: '20px', fontWeight: 800, color: '#1A1A1A', marginBottom: '8px' }}>{emp.name}</h3>
+              <p style={{ fontSize: '13px', fontWeight: 700, color: '#ff6ce7', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>{emp.role}</p>
+              {emp.bio && <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>{emp.bio}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────
 // Clients
 // ─────────────────────────────────────────
 function ClientsSection() {
@@ -1232,6 +1294,7 @@ export default function KiwiConnectDigital() {
       <ServicesSection />
       <WorkSection />
       <AboutSection />
+      <EmployeesSection />
       <ClientsSection />
       <TestimonialsSection />
       <CTASection />
