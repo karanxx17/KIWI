@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Kiwi Connect Digital | Digital Marketing Agency, Bhopal",
-  description: "Kiwi Connect Digital - Premier digital marketing agency in Bhopal. SEO, Social Media, Brand Strategy, Paid Campaigns and more.",
+  description: "Kiwi Connect Digital - Premier digital marketing agency in Bhopal.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="noise">
+      <body className={`${urbanist.className} noise`}>
         {children}
       </body>
     </html>

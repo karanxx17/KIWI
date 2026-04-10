@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, type MouseEvent, type RefObject } from "react";
 import Navbar from "@/app/components/Navbar";
-
+import Link from "next/link";
 
 const NAV_LINKS = ["About", "Work", "Services", "Clients", "Contact"];
 
@@ -100,14 +100,14 @@ const TESTIMONIALS = [
 ];
 
 const CLIENTS = [
-  "https://logo.clearbit.com/airbnb.com",
-  "https://logo.clearbit.com/spotify.com",
-  "https://logo.clearbit.com/notion.so",
-  "https://logo.clearbit.com/figma.com",
-  "https://logo.clearbit.com/shopify.com",
-  "https://logo.clearbit.com/stripe.com",
-  "https://logo.clearbit.com/linear.app",
-  "https://logo.clearbit.com/vercel.com",
+  "https://img.logo.dev/meta.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/netflix.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/figma.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/mcdonalds.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/google.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/visa.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/porsche.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "https://img.logo.dev/facebook.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
 ];
 
 // ─────────────────────────────────────────
@@ -128,93 +128,57 @@ function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.1): [Re
 }
 
 // ─────────────────────────────────────────
-// Navbar
-// ─────────────────────────────────────────
-// function Navbar() {
-//   const [scrolled, setScrolled] = useState(false);
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   useEffect(() => {
-//     const onScroll = () => setScrolled(window.scrollY > 20);
-//     window.addEventListener("scroll", onScroll);
-//     return () => window.removeEventListener("scroll", onScroll);
-//   }, []);
-
-//   return (
-//     <nav className={`navbar${scrolled ? " navbar--scrolled" : ""}`}>
-//       <div className="navbar__inner">
-//         {/* Logo */}
-//         <div className="navbar__logo">
-//           <div className="navbar__logo-icon">K</div>
-//           <span className="navbar__logo-text">Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
-//         </div>
-
-//         {/* Desktop links */}
-//         <ul className="navbar__links">
-//           {NAV_LINKS.map((l) => (
-//             <li key={l}>
-//               <a href={`#${l.toLowerCase()}`} className="navbar__link">{l}</a>
-//             </li>
-//           ))}
-//         </ul>
-
-//         {/* Desktop CTA */}
-//         <button className="navbar__cta">Let's Talk →</button>
-
-//         {/* Hamburger */}
-//         <button
-//           className="navbar__hamburger"
-//           onClick={() => setMenuOpen(!menuOpen)}
-//           aria-label="Toggle menu"
-//         >
-//           <span className={`navbar__hamburger-line${menuOpen ? " open" : ""}`} />
-//           <span className={`navbar__hamburger-line${menuOpen ? " open" : ""}`} />
-//           <span className={`navbar__hamburger-line${menuOpen ? " open" : ""}`} />
-//         </button>
-//       </div>
-
-//       {/* Mobile menu */}
-//       <div className={`navbar__mobile-menu${menuOpen ? " navbar__mobile-menu--open" : ""}`}>
-//         {NAV_LINKS.map((l) => (
-//           <a key={l} href={`#${l.toLowerCase()}`} className="navbar__mobile-link" onClick={() => setMenuOpen(false)}>{l}</a>
-//         ))}
-//         <button className="navbar__cta navbar__cta--mobile">Let's Talk →</button>
-//       </div>
-//     </nav>
-//   );
-// }
-
-// ─────────────────────────────────────────
 // Hero
 // ─────────────────────────────────────────
 function HeroSection() {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => { setTimeout(() => setLoaded(true), 80); }, []);
 
-  return (
-    <section className="hero">
-      <div className="hero__blob hero__blob--tr" />
-      <div className="hero__blob hero__blob--bl" />
+  // return (
+  //   <section className="hero">
+  //     <div className="hero__blob hero__blob--tr" />
+  //     <div className="hero__blob hero__blob--bl" />
 
-      <div className={`hero__badge${loaded ? " hero__badge--in" : ""}`}>
-        <span className="hero__badge-dot" />
-        <span>17 Years of Digital Excellence</span>
+  //     {/* <div className={`hero__badge${loaded ? " hero__badge--in" : ""}`}>
+  //       <span className="hero__badge-dot" />
+  //       <span>17 Years of Digital Excellence</span>
+  //     </div> */}
+      
+
+    return (
+    <section className="hero relative overflow-hidden min-h-screen">
+      
+      {/* --- BUBBLE ANIMATION LAYER --- */}
+      <div className="bubble-container">
+        <div className="bubble bubble--1" />
+        <div className="bubble bubble--2" />
+        <div className="bubble bubble--3" />
+        <div className="bubble bubble--4" />
+        <div className="bubble bubble--5" />
+        <div className="bubble-noise" />
       </div>
 
-      <h1 className={`hero__headline${loaded ? " hero__headline--in" : ""}`}>
-        Marketing That<br />
-        <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>Actually Grows</em><br />
-        Your Business.
-      </h1>
+  
+      <div className="relative z-10 container mx-auto text-center">
+        <h1 className={`hero__headline${loaded ? " hero__headline--in" : ""}`}>
+          Marketing That<br />
+          <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>Actually Grows</em><br />
+          Your Business.
+        </h1>
 
-      <p className={`hero__sub${loaded ? " hero__sub--in" : ""}`}>
-        Kiwi Connect Digital is a full-service growth agency trusted by 340+ brands. We blend strategy, creativity, and data to build marketing that converts.
-      </p>
+        <p className={`hero__sub${loaded ? " hero__sub--in" : ""}`}>
+          Kiwi Connect Digital is a full-service growth agency. We blend strategy, creativity, and data to build marketing that converts.
+        </p>
 
-      <div className={`hero__ctas${loaded ? " hero__ctas--in" : ""}`}>
-        <button className="btn btn--primary">Start Growing Today →</button>
-        <button className="btn btn--outline">View Our Work</button>
-      </div>
+        <div className={`hero__ctas${loaded ? " hero__ctas--in" : ""}`}>
+          <Link href="/contact">
+            <button className="btn btn--primary">Start Growing Today →</button>
+          </Link>
+          <Link href="/services">
+            <button className="btn btn--outline">View Our Services</button>
+          </Link>
+        </div>
+      </div> 
 
       {/* Hero Image Grid */}
       <div className={`hero__grid${loaded ? " hero__grid--in" : ""}`}>
@@ -258,25 +222,27 @@ function StatsBar() {
 // Services
 // ─────────────────────────────────────────
 function ServicesSection() {
-  const [ref, inView] = useInView();
   return (
-    <section id="services" ref={ref} className="section section--light">
+    <section id="services" className="section section--light">
       <div className="container">
         <div className="services__header">
-          <div className={`services__header-left${inView ? " fade-in" : ""}`}>
+          {/* Changed: Removed the template literal and 'inView' check */}
+          <div className="services__header-left">
             <div className="eyebrow">What We Do</div>
             <h2 className="heading-lg">
               Services built for<br /><em style={{ fontStyle: "italic", color: "#ff6ce7" }}>real results.</em>
             </h2>
           </div>
-          <p className={`services__header-desc${inView ? " fade-in fade-in--delay" : ""}`}>
+          
+          {/* Changed: Removed conditional classes */}
+          <p className="services__header-desc">
             From brand building to performance campaigns, we offer end-to-end marketing solutions powered by 17 years of hard-earned expertise.
           </p>
         </div>
 
         <div className="services__grid">
           {SERVICES.map((s, i) => (
-            <ServiceCard key={i} s={s} i={i} inView={inView} />
+            <ServiceCard key={i} s={s} />
           ))}
         </div>
       </div>
@@ -284,14 +250,16 @@ function ServicesSection() {
   );
 }
 
-function ServiceCard({ s, i, inView }: { s: typeof SERVICES[0]; i: number; inView: boolean }) {
+// Removed: inView prop as it's no longer needed for visibility
+function ServiceCard({ s }: { s: typeof SERVICES[0] }) {
   const [hov, setHov] = useState(false);
+  
   return (
     <div
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      className={`service-card${hov ? " service-card--hov" : ""}${inView ? " service-card--in" : ""}`}
-      style={{ transitionDelay: `${0.08 * i}s` }}
+      /* Removed: service-card--in and dynamic style for transitionDelay */
+      className={`service-card${hov ? " service-card--hov" : ""}`}
     >
       <div className="service-card__top">
         <div className="service-card__icon">{s.icon}</div>
@@ -327,6 +295,7 @@ function WorkSection() {
     </section>
   );
 }
+
 
 function WorkCard({ w, i, inView }: { w: typeof WORK[0]; i: number; inView: boolean }) {
   const [hov, setHov] = useState(false);
@@ -505,7 +474,7 @@ function Footer() {
   const MENU: [string, string[]][] = [
     ["Company", ["About", "Work", "Services", "Blog", "Careers"]],
     ["Services", ["Brand Strategy", "Performance", "SEO & Content", "Social Media", "Web & UX"]],
-    ["Contact", ["hello@kiwiconnect.in", "+91 98765 43210", "Mumbai, India", "LinkedIn", "Twitter"]],
+    ["Contact", ["kiwiconnectdigital@gmail.com", "+91 8305959538, +91 6261610281", "Bhopal, India", "LinkedIn", "Twitter"]],
   ];
 
   return (
@@ -514,7 +483,7 @@ function Footer() {
         <div className="footer__grid">
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-icon">K</div>
+              <img src="/kiwilogo.png" alt="Kiwi Connect Digital" style={{ width: 36, height: 36, objectFit: "contain" }} />
               <span className="footer__logo-text">Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
             </div>
             <p className="footer__tagline">Growth-driven marketing for ambitious brands. 17 years. 340+ clients. Counting.</p>
@@ -531,8 +500,8 @@ function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <div>© 2025 Kiwi Connect Digital. All rights reserved.</div>
-          <div>Crafted with ✦ in Mumbai</div>
+          <div>© 2026 Kiwi Connect Digital. All rights reserved.</div>
+          <div>Crafted by Kiwi Connect</div>
         </div>
       </div>
     </footer>

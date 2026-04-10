@@ -344,31 +344,31 @@ function TeamCard({ t, i, inView }: TeamCardProps) {
 }
 
 /* ─── TEAM ──────────────────────────────── */
-function TeamSection() {
-  const [ref, inView] = useInView<HTMLElement>();
-  return (
-    <section ref={ref} style={{ padding: "80px 5%", background: "#F2F0EA" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 56, flexWrap: "wrap", gap: 20 }}>
-          <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease" }}>
-            <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>The People</div>
-            <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,3.8vw,50px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
-              Meet the minds<br />behind the <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>magic.</em>
-            </h2>
-          </div>
-          <p style={{ maxWidth: 320, color: "#666", lineHeight: 1.8, fontSize: 14, fontWeight: 500, opacity: inView ? 1 : 0, transition: "all 0.7s ease 0.15s" }}>
-            60+ specialists across strategy, creative, performance, and tech — all united by one goal: your growth.
-          </p>
-        </div>
-        <div className="team-grid">
-          {TEAM.map((t, i) => (
-            <TeamCard key={i} t={t} i={i} inView={inView} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+// function TeamSection() {
+//   const [ref, inView] = useInView<HTMLElement>();
+//   return (
+//     <section ref={ref} style={{ padding: "80px 5%", background: "#F2F0EA" }}>
+//       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+//         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 56, flexWrap: "wrap", gap: 20 }}>
+//           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease" }}>
+//             <div style={{ fontSize: 10, fontWeight: 800, color: "#ff6ce7", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: 12 }}>The People</div>
+//             <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,3.8vw,50px)", fontWeight: 800, color: "#1A1A1A", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
+//               Meet the minds<br />behind the <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>magic.</em>
+//             </h2>
+//           </div>
+//           <p style={{ maxWidth: 320, color: "#666", lineHeight: 1.8, fontSize: 14, fontWeight: 500, opacity: inView ? 1 : 0, transition: "all 0.7s ease 0.15s" }}>
+//             60+ specialists across strategy, creative, performance, and tech — all united by one goal: your growth.
+//           </p>
+//         </div>
+//         <div className="team-grid">
+//           {TEAM.map((t, i) => (
+//             <TeamCard key={i} t={t} i={i} inView={inView} />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ─── CULTURE ───────────────────────────── */
 function CultureSection() {
@@ -453,11 +453,22 @@ function Footer() {
     <footer style={{ background: "#111", padding: "40px 5% 24px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#ff6ce7,#ba3aff)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16 }}>K</div>
-          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
+          {/* Logo Image */}
+          <img 
+            src="/kiwilogo.png" 
+            alt="Kiwi Connect Logo" 
+            style={{ width: 32, height: 32, borderRadius: 9, objectFit: "cover" }} 
+          />
+          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>
+            Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span>
+          </span>
         </div>
-        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>© 2025 Kiwi Connect Digital. All rights reserved.</div>
-        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>Crafted with ✦ in Mumbai</div>
+        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>
+          © 2026 Kiwi Connect Digital. All rights reserved.
+        </div>
+        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>
+          Crafted by KiwiConnect
+        </div>
       </div>
     </footer>
   );
@@ -507,7 +518,7 @@ export default function AboutPage() {
       <MissionVision />
       <StorySection />
       <ValuesSection />
-      <TeamSection />
+      {/* <TeamSection /> */}
       <CultureSection />
       <CTASection />
       <Footer />

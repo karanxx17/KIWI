@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, type RefObject } from "react";
 import Navbar from "@/app/components/Navbar";
 
 
-/* ─── DATA ─────────────────────────────── */
 const SERVICES = [
   {
     id: "smm", icon: "📱", tag: "01",
@@ -30,20 +29,11 @@ const SERVICES = [
     short: "Every rupee working harder for you.",
     desc: "Maximize ROI with targeted ad campaigns on Google and Meta platforms. We research, build, and continuously optimise your ad budget for maximum conversions and measurable results.",
     features: ["Campaign Architecture", "Audience Targeting", "A/B Creative Testing", "Bid Optimisation", "Conversion Tracking"],
-    img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=85",
+    img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85",
     accent: "#F97316", light: "#FFF7ED",
   },
   {
-    id: "content", icon: "✍️", tag: "04",
-    title: "Content Creation",
-    short: "Words and visuals that earn attention.",
-    desc: "Engage your audience with compelling, high-quality content that drives traffic, builds brand authority, and converts visitors into loyal customers across every digital touchpoint.",
-    features: ["Blog & Article Writing", "Copywriting", "Graphic Design", "Infographics", "Brand Storytelling"],
-    img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=85",
-    accent: "#8B5CF6", light: "#F5F3FF",
-  },
-  {
-    id: "reels", icon: "🎬", tag: "05",
+    id: "reels", icon: "🎬", tag: "04",
     title: "Reels & Short Video Editing",
     short: "Scroll-stopping content for the short-form era.",
     desc: "Create viral-worthy short videos and reels that capture attention instantly, boost engagement, and grow your social media following rapidly across Instagram, TikTok, and YouTube Shorts.",
@@ -52,16 +42,34 @@ const SERVICES = [
     accent: "#EC4899", light: "#FDF2F8",
   },
   {
-    id: "web", icon: "💻", tag: "06",
-    title: "Website Design & Development",
-    short: "Your website should work as hard as you do.",
-    desc: "Build a powerful online presence with responsive, user-friendly websites designed to convert visitors into customers and drive sustainable business growth effectively.",
-    features: ["UI/UX Design", "Responsive Development", "CMS Integration", "Speed Optimisation", "Ongoing Maintenance"],
-    img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=85",
+    id: "software", icon: "💻", tag: "05",
+    title: "Software Development",
+    short: "Custom solutions for complex problems.",
+    desc: "From enterprise Resource Planning (ERP) to custom SaaS products, we build scalable software tailored to your specific business logic and operational needs.",
+    features: ["Custom CRM/ERP", "SaaS Development", "API Integrations", "Database Architecture", "Cloud Deployment"],
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=85",
     accent: "#14B8A6", light: "#F0FDFA",
   },
   {
-    id: "youtube", icon: "▶️", tag: "07",
+    id: "app-dev", icon: "📱", tag: "06",
+    title: "Mobile App Development",
+    short: "Your brand, right in their pocket.",
+    desc: "We develop high-performance iOS and Android applications with seamless user experiences, ensuring your business stays connected with customers on the move.",
+    features: ["iOS & Android Apps", "Cross-Platform (React Native)", "App Store Optimisation", "Push Notifications", "User Authentication"],
+    img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=85",
+    accent: "#6366F1", light: "#EEF2FF",
+  },
+  {
+    id: "web-dev", icon: "🌐", tag: "07",
+    title: "Website Design & Development",
+    short: "High-conversion digital experiences.",
+    desc: "Build a powerful online presence with responsive, user-friendly websites designed to convert visitors into customers and drive sustainable business growth effectively.",
+    features: ["UI/UX Design", "Responsive Development", "CMS Integration", "Speed Optimisation", "Ongoing Maintenance"],
+    img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=85",
+    accent: "#8B5CF6", light: "#F5F3FF",
+  },
+  {
+    id: "youtube", icon: "▶️", tag: "08",
     title: "YouTube Marketing",
     short: "Grow your channel into a brand asset.",
     desc: "Grow your YouTube channel with strategic video marketing. We optimise content for discovery, manage ads, and build subscriber funnels for maximum reach and monetisation potential.",
@@ -70,40 +78,49 @@ const SERVICES = [
     accent: "#EF4444", light: "#FEF2F2",
   },
   {
-    id: "influencer", icon: "🤝", tag: "08",
+    id: "influencer", icon: "🤝", tag: "09",
     title: "Influencer Marketing",
     short: "Borrow trust. Amplify reach. Win credibility.",
     desc: "Amplify your brand reach through strategic influencer partnerships. We connect you with relevant, high-impact influencers to boost credibility, awareness, and conversions authentically.",
-    features: ["Influencer Discovery & Vetting", "Campaign Briefing", "Contract Management", "Performance Tracking", "ROI Analysis"],
+    features: ["Influencer Vetting", "Campaign Briefing", "Contract Management", "Performance Tracking", "ROI Analysis"],
     img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=700&q=85",
     accent: "#F59E0B", light: "#FFFBEB",
   },
   {
-    id: "gmb", icon: "📍", tag: "09",
+    id: "gmb", icon: "📍", tag: "10",
     title: "Local Business Listing & GMB",
-    short: "Dominate your neighbourhood search results.",
-    desc: "Dominate local search with an optimised Google Business Profile and directory listings. Attract nearby customers, manage your online reputation, and boost local visibility significantly.",
-    features: ["GMB Setup & Optimisation", "Review Management", "Local Citations", "NAP Consistency", "Local SEO Strategy"],
+    short: "Dominate your neighbourhood search.",
+    desc: "Dominate local search with an optimised Google Business Profile and directory listings. Attract nearby customers and manage your online reputation effectively.",
+    features: ["GMB Optimisation", "Review Management", "Local Citations", "NAP Consistency", "Local SEO Strategy"],
     img: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=700&q=85",
     accent: "#10B981", light: "#ECFDF5",
   },
   {
-    id: "brand", icon: "🎨", tag: "10",
+    id: "brand", icon: "🎨", tag: "11",
     title: "Logo & Brand Package",
     short: "First impressions that last forever.",
-    desc: "Create a memorable brand identity with professional logo design and complete branding packages that make your business stand out, inspire trust, and communicate your story instantly.",
-    features: ["Logo Design (3 Concepts)", "Brand Guidelines", "Colour & Typography System", "Business Card & Stationery", "Brand Asset Library"],
+    desc: "Create a memorable brand identity with professional logo design and complete branding packages that make your business stand out and communicate your story instantly.",
+    features: ["Logo Design", "Brand Guidelines", "Typography System", "Business Card Design", "Brand Asset Library"],
     img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=700&q=85",
     accent: "#ff6ce7", light: "#EBF8D8",
   },
   {
-    id: "email", icon: "📧", tag: "11",
+    id: "email", icon: "📧", tag: "12",
     title: "Email Marketing",
-    short: "The highest-ROI channel — done right.",
-    desc: "Engage and nurture your audience with personalised email campaigns that consistently boost open rates, drive conversions, and build lasting customer relationships over time.",
-    features: ["List Building & Segmentation", "Template Design", "Automation Sequences", "A/B Subject Testing", "Deliverability Optimisation"],
-    img: "https://images.unsplash.com/photo-1596526131083-e8c633964948?w=700&q=85",
+    short: "High-ROI retention marketing.",
+    desc: "Engage and nurture your audience with personalised email campaigns that consistently boost open rates, drive conversions, and build lasting customer relationships.",
+    features: ["Segmentation", "Template Design", "Automation Sequences", "A/B Testing", "Deliverability Tuning"],
+    img: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=700&q=80",
     accent: "#6366F1", light: "#EEF2FF",
+  },
+  {
+    id: "content", icon: "✍️", tag: "13",
+    title: "Content Creation",
+    short: "Words and visuals that earn attention.",
+    desc: "Engage your audience with compelling, high-quality content that drives traffic, builds brand authority, and converts visitors into loyal customers.",
+    features: ["Blog Writing", "Copywriting", "Graphic Design", "Infographics", "Brand Storytelling"],
+    img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=85",
+    accent: "#8B5CF6", light: "#F5F3FF",
   },
 ];
 
@@ -483,11 +500,22 @@ function Footer() {
     <footer style={{ background: "#111", padding: "40px 5% 24px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: "linear-gradient(135deg,#ff6ce7,#ba3aff)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16, fontFamily: "'Syne',sans-serif" }}>K</div>
-          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
+          {/* Logo Image */}
+          <img 
+            src="/kiwilogo.png" 
+            alt="Kiwi Connect Logo" 
+            style={{ width: 32, height: 32, borderRadius: 9, objectFit: "cover" }} 
+          />
+          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15, color: "#fff" }}>
+            Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span>
+          </span>
         </div>
-        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>© 2025 Kiwi Connect Digital. All rights reserved.</div>
-        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>Crafted with ✦ in Mumbai</div>
+        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500, textAlign: "center" }}>
+          © 2026 Kiwi Connect Digital. All rights reserved.
+        </div>
+        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontWeight: 500 }}>
+          Crafted by KiwiConnect
+        </div>
       </div>
     </footer>
   );
