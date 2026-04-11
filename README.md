@@ -25,7 +25,7 @@ Navigate to `backend/` and create `.env` file:
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://kiwiuser:kiwi123@cluster0.rsbg0gy.mongodb.net/kiwigram?retryWrites=true&w=majority
+
 JWT_SECRET=kiwigram-secret-key
 NODE_ENV=development
 DEFAULT_ADMIN_EMAIL=admin@gmail.com

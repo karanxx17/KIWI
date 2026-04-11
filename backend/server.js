@@ -78,6 +78,7 @@ const postsRoutes = require("./routes/posts");
 const reelsRoutes = require("./routes/reels");
 const usersRoutes = require("./routes/users");
 const employeesRoutes = require("./routes/employees");
+const uploadRoutes = require("./routes/upload");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/stories", storiesRoutes);
@@ -85,6 +86,7 @@ app.use("/api/posts", postsRoutes);
 app.use("/api/reels", reelsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/employees", employeesRoutes);
+app.use("/api/upload", uploadRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

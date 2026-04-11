@@ -23,4 +23,18 @@ const adminMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { authMiddleware, adminMiddleware };
+// Decodes token if present, but doesn't block if absent
+const optionalAuth = (req, res, next) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (token) {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || "kiwigram-secret");
+      req.userId = decoded.userId;
+    }
+  } catch (_) {
+    // ignore invalid tokens
+  }
+  next();
+};
+
+module.exports = { authMiddleware, adminMiddleware, optionalAuth };

@@ -1,5 +1,5 @@
 const express = require("express");
-const { authMiddleware } = require("../middleware/auth");
+const { authMiddleware, optionalAuth } = require("../middleware/auth");
 const {
   getAllPosts,
   createPost,
@@ -12,10 +12,10 @@ const {
 const router = express.Router();
 
 router.get("/", getAllPosts);
-router.post("/", authMiddleware, createPost);
-router.put("/:id", authMiddleware, updatePost);
-router.delete("/:id", authMiddleware, deletePost);
-router.post("/:id/like", authMiddleware, likePost);
-router.post("/:id/comment", authMiddleware, addComment);
+router.post("/", optionalAuth, createPost);   // admin can post without JWT
+router.put("/:id", optionalAuth, updatePost);
+router.delete("/:id", optionalAuth, deletePost);
+router.post("/:id/like", optionalAuth, likePost);
+router.post("/:id/comment", optionalAuth, addComment);
 
 module.exports = router;

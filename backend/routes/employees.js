@@ -4,14 +4,17 @@ const {
   createEmployee,
   deleteEmployee,
   updateEmployee,
+  followEmployee,
 } = require("../controllers/employeeController");
 const { authMiddleware } = require("../middleware/auth");
 
 const router = express.Router();
 
 router.get("/", getAllEmployees);
-router.post("/", createEmployee); // skipping auth layer for testing or maybe add authMiddleware
-router.put("/:id", updateEmployee);
-router.delete("/:id", deleteEmployee);
+router.post("/:id/follow", followEmployee); // Public for guests
+// Protected admin routes
+router.post("/", authMiddleware, createEmployee);
+router.put("/:id", authMiddleware, updateEmployee);
+router.delete("/:id", authMiddleware, deleteEmployee);
 
 module.exports = router;

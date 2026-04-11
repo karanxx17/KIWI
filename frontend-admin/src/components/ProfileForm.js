@@ -5,6 +5,7 @@ const ProfileForm = ({ user, onSuccess }) => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [followersCount, setFollowersCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -12,6 +13,7 @@ const ProfileForm = ({ user, onSuccess }) => {
       setName(user.name || "");
       setBio(user.bio || "");
       setAvatar(user.avatar || "");
+      setFollowersCount(user.followersCount || 0);
     }
   }, [user]);
 
@@ -34,7 +36,7 @@ const ProfileForm = ({ user, onSuccess }) => {
     }
     setLoading(true);
     try {
-      await usersAPI.updateProfile({ name, bio, avatar });
+      await usersAPI.updateProfile({ name, bio, avatar, followersCount: Number(followersCount) });
       alert("Profile updated successfully!");
       if (onSuccess) onSuccess();
     } catch (error) {
@@ -64,6 +66,18 @@ const ProfileForm = ({ user, onSuccess }) => {
         spellCheck={false}
         rows={4}
       />
+
+      <div style={{ marginBottom: "15px" }}>
+        <label style={{ fontSize: "12px", color: "#666", marginBottom: "5px", display: "block" }}>Followers Count:</label>
+        <input
+          type="number"
+          placeholder="Followers Count"
+          value={followersCount}
+          onChange={(e) => setFollowersCount(e.target.value)}
+          spellCheck={false}
+          style={{ marginBottom: 0 }}
+        />
+      </div>
       
       <div style={{ marginBottom: "15px", display: "flex", alignItems: "center", gap: "10px" }}>
         <input

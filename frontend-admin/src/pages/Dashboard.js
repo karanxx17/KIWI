@@ -15,6 +15,7 @@ const Dashboard = ({ user }) => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
   const [editingEmployee, setEditingEmployee] = useState(null);
+  const [editingPost, setEditingPost] = useState(null);
 
   const loadData = useCallback(async () => {
     setLoading(true);
@@ -65,6 +66,24 @@ const Dashboard = ({ user }) => {
     }
   };
 
+  const [quickComment, setQuickComment] = useState({ postId: null, text: "", authorId: "admin" });
+
+  const handleAddComment = async (postId) => {
+    if (!quickComment.text.trim()) return;
+    try {
+      await postsAPI.addComment(postId, {
+        text: quickComment.text,
+        authorId: quickComment.authorId === "admin" ? null : quickComment.authorId,
+        onModel: quickComment.authorId === "admin" ? "User" : "Employee"
+      });
+      setQuickComment({ postId: null, text: "", authorId: "admin" });
+      loadData();
+      alert("Comment posted successfully!");
+    } catch (err) {
+      alert("Error posting comment");
+    }
+  };
+
   return (
     <div className="dashboard">
       <header className="dashboard-header">
@@ -109,7 +128,7 @@ const Dashboard = ({ user }) => {
         {loading && <div className="loading">Loading...</div>}
         {activeTab === "stories" && (
           <>
-            <StoryForm onSuccess={loadData} />
+            <StoryForm onSuccess={loadData} employees={employees} />
             <div className="items-list">
               {stories.map((story) => (
                 <div key={story._id} className="item-card">
@@ -129,19 +148,64 @@ const Dashboard = ({ user }) => {
 
         {activeTab === "posts" && (
           <>
-            <PostForm onSuccess={loadData} />
+            <PostForm 
+              onSuccess={() => {
+                loadData();
+                setEditingPost(null);
+              }} 
+              initialData={editingPost}
+              onCancel={() => setEditingPost(null)}
+            />
             <div className="items-list">
               {posts.map((post) => (
                 <div key={post._id} className="item-card">
                   <img src={post.image} alt="Post" />
                   <h4>{post.caption}</h4>
-                  <p>Likes: {post.likes}</p>
-                  <button
-                    onClick={() => handleDelete(post._id, "post")}
-                    className="delete-btn"
-                  >
-                    Delete
-                  </button>
+                  <p>Likes: {post.likes} | Comments: {post.comments?.length || 0}</p>
+
+                  {/* Comment Section in Admin */}
+                  <div style={{ marginTop: '10px', padding: '10px', background: '#f9f9f9', borderRadius: '8px' }}>
+                    <h5 style={{ margin: '0 0 10px 0' }}>💬 Add Admin Comment</h5>
+                    <select 
+                      value={quickComment.postId === post._id ? quickComment.authorId : "admin"}
+                      onChange={(e) => setQuickComment({ ...quickComment, postId: post._id, authorId: e.target.value })}
+                      style={{ width: '100%', padding: '8px', marginBottom: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                    >
+                      <option value="admin">Admin (Self)</option>
+                      {employees.map(emp => (
+                        <option key={emp._id} value={emp._id}>{emp.name}</option>
+                      ))}
+                    </select>
+                    <textarea 
+                      placeholder="Type a comment..."
+                      value={quickComment.postId === post._id ? quickComment.text : ""}
+                      onChange={(e) => setQuickComment({ ...quickComment, postId: post._id, text: e.target.value })}
+                      style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', minHeight: '60px', marginBottom: '8px' }}
+                    />
+                    <button 
+                      onClick={() => handleAddComment(post._id)}
+                      style={{ width: '100%', background: '#ff6ce7', color: 'white', border: 'none', padding: '8px', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}
+                    >
+                      Post Comment
+                    </button>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+                    <button
+                      onClick={() => setEditingPost(post)}
+                      className="edit-btn"
+                      style={{ flex: 1, backgroundColor: "#4a90e2", color: "white", padding: "10px", border: "none", borderRadius: "8px", cursor: "pointer", fontSize: "14px", fontWeight: "bold" }}
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(post._id, "post")}
+                      className="delete-btn"
+                      style={{ flex: 1 }}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

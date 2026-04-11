@@ -1,10 +1,10 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find()
-      .populate("user", "name handle avatar verified")
-      .populate("comments.user", "name avatar")
+      .populate("author")
       .sort({ createdAt: -1 });
     res.json(posts);
   } catch (error) {
@@ -14,10 +14,28 @@ exports.getAllPosts = async (req, res) => {
 
 exports.createPost = async (req, res) => {
   try {
-    const { caption, image, location, badge, tags, music } = req.body;
+    const { caption, image, location, badge, tags, music, authorId, onModel } = req.body;
+
+    let finalAuthorId = authorId;
+    let finalOnModel = onModel || 'User';
+
+    // If no specific author provided, use logged-in user or default admin
+    if (!finalAuthorId) {
+      finalAuthorId = req.userId;
+      if (!finalAuthorId) {
+        const adminEmail = process.env.DEFAULT_ADMIN_EMAIL || "admin@gmail.com";
+        const admin = await User.findOne({ email: adminEmail });
+        if (!admin) {
+          return res.status(400).json({ message: "No author found. Please log in." });
+        }
+        finalAuthorId = admin._id;
+        finalOnModel = 'User';
+      }
+    }
 
     const post = new Post({
-      user: req.userId,
+      author: finalAuthorId,
+      onModel: finalOnModel,
       caption,
       image,
       location,
@@ -27,7 +45,7 @@ exports.createPost = async (req, res) => {
     });
 
     await post.save();
-    await post.populate("user", "name handle avatar verified");
+    await post.populate("author");
 
     res.status(201).json({ message: "Post created successfully", post });
   } catch (error) {
@@ -43,10 +61,6 @@ exports.updatePost = async (req, res) => {
     const post = await Post.findById(id);
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
-    }
-
-    if (post.user.toString() !== req.userId) {
-      return res.status(403).json({ message: "Not authorized" });
     }
 
     post.caption = caption || post.caption;
@@ -71,10 +85,6 @@ exports.deletePost = async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    if (post.user.toString() !== req.userId) {
-      return res.status(403).json({ message: "Not authorized" });
-    }
-
     await post.deleteOne();
     res.json({ message: "Post deleted successfully" });
   } catch (error) {
@@ -85,19 +95,36 @@ exports.deletePost = async (req, res) => {
 exports.likePost = async (req, res) => {
   try {
     const { id } = req.params;
+    const { deviceId } = req.body;
     const post = await Post.findById(id);
 
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    const isLiked = post.likedBy.includes(req.userId);
-    if (isLiked) {
-      post.likedBy = post.likedBy.filter((u) => u.toString() !== req.userId);
-      post.likes--;
+    if (req.userId) {
+      // Logged-in user logic
+      const isLiked = post.likedBy.includes(req.userId);
+      if (isLiked) {
+        post.likedBy = post.likedBy.filter((u) => u.toString() !== req.userId);
+        post.likes--;
+      } else {
+        post.likedBy.push(req.userId);
+        post.likes++;
+      }
+    } else if (deviceId) {
+      // Guest (device-based) logic
+      if (!post.likedByDevices) post.likedByDevices = [];
+      const isLiked = post.likedByDevices.includes(deviceId);
+      if (isLiked) {
+        post.likedByDevices = post.likedByDevices.filter((d) => d !== deviceId);
+        post.likes--;
+      } else {
+        post.likedByDevices.push(deviceId);
+        post.likes++;
+      }
     } else {
-      post.likedBy.push(req.userId);
-      post.likes++;
+      return res.status(400).json({ message: "No user identity provided" });
     }
 
     await post.save();
@@ -110,15 +137,21 @@ exports.likePost = async (req, res) => {
 exports.addComment = async (req, res) => {
   try {
     const { id } = req.params;
-    const { text } = req.body;
+    const { text, deviceId, authorId, onModel } = req.body;
 
     const post = await Post.findById(id);
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
 
+    // Use specific author if provided (Admin panel)
+    let finalAuthorId = authorId || req.userId || null;
+    let finalOnModel = onModel || (req.userId ? 'User' : 'User');
+
     post.comments.push({
-      user: req.userId,
+      author: finalAuthorId,
+      onModel: finalOnModel,
+      deviceId: deviceId || null,
       text,
     });
 

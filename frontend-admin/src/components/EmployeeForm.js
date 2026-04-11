@@ -6,6 +6,7 @@ const EmployeeForm = ({ onSuccess, initialData = null, onCancel = null }) => {
   const [role, setRole] = useState("");
   const [bio, setBio] = useState("");
   const [image, setImage] = useState("");
+  const [followersCount, setFollowersCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const EmployeeForm = ({ onSuccess, initialData = null, onCancel = null }) => {
       setRole(initialData.role || "");
       setBio(initialData.bio || "");
       setImage(initialData.image || "");
+      setFollowersCount(initialData.followersCount || 0);
     }
   }, [initialData]);
 
@@ -36,16 +38,18 @@ const EmployeeForm = ({ onSuccess, initialData = null, onCancel = null }) => {
     }
     setLoading(true);
     try {
+      const employeeData = { name, role, bio, image, followersCount: Number(followersCount) };
       if (initialData && initialData._id) {
-        await employeesAPI.update(initialData._id, { name, role, bio, image });
+        await employeesAPI.update(initialData._id, employeeData);
       } else {
-        await employeesAPI.create({ name, role, bio, image });
+        await employeesAPI.create(employeeData);
       }
       if (!initialData) {
         setName("");
         setRole("");
         setBio("");
         setImage("");
+        setFollowersCount(0);
       }
       if (onSuccess) onSuccess();
     } catch (error) {
@@ -83,6 +87,18 @@ const EmployeeForm = ({ onSuccess, initialData = null, onCancel = null }) => {
         onChange={(e) => setBio(e.target.value)}
         spellCheck={false}
       />
+      
+      <div style={{ marginBottom: "15px" }}>
+        <label style={{ fontSize: "12px", color: "#666", marginBottom: "5px", display: "block" }}>Followers Count:</label>
+        <input
+          type="number"
+          placeholder="Followers Count"
+          value={followersCount}
+          onChange={(e) => setFollowersCount(e.target.value)}
+          spellCheck={false}
+          style={{ marginBottom: 0 }}
+        />
+      </div>
       
       <div style={{ marginBottom: "15px", display: "flex", alignItems: "center", gap: "10px" }}>
         <input

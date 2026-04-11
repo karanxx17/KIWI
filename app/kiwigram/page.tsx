@@ -9,9 +9,10 @@ interface User {
   avatar: string;
   verified: boolean;
   bio: string;
-  followers: string;
+  followers: string | number;
   following: string;
   posts: number;
+  type?: string; // "User" or "Employee"
 }
 interface Story {
   user: User;
@@ -26,7 +27,7 @@ interface Comment {
   time: string;
 }
 interface Post {
-  id: number;
+  id: number | string;
   user: User;
   time: string;
   location: string;
@@ -607,6 +608,7 @@ function PostCard({
   onReact,
   onComment,
   onToggleCm,
+  onViewProfile,
 }: {
   post: Post;
   liked: boolean;
@@ -620,6 +622,7 @@ function PostCard({
   onReact: (e: string) => void;
   onComment: (t: string) => void;
   onToggleCm: () => void;
+  onViewProfile: (u: User) => void;
 }) {
   const [hov, setHov] = useState(false);
   const [heartBurst, setHeartBurst] = useState(false);
@@ -657,6 +660,7 @@ function PostCard({
         <img
           src={post.user.avatar}
           alt=""
+          onClick={() => onViewProfile(post.user)}
           style={{
             width: 40,
             height: 40,
@@ -664,6 +668,7 @@ function PostCard({
             objectFit: "cover",
             border: `2px solid ${V.pink}`,
             flexShrink: 0,
+            cursor: "pointer",
           }}
           onError={(e) => {
             (e.target as HTMLImageElement).style.opacity = ".3";
@@ -671,12 +676,14 @@ function PostCard({
         />
         <div style={{ flex: 1 }}>
           <div
+            onClick={() => onViewProfile(post.user)}
             style={{
               fontWeight: 700,
               fontSize: 13.5,
               display: "flex",
               alignItems: "center",
               gap: 4,
+              cursor: "pointer",
             }}
           >
             {post.user.name}
@@ -1015,36 +1022,10 @@ function PostCard({
                     <div
                       style={{ fontWeight: 700, fontSize: 12, marginBottom: 1 }}
                     >
-                      {c.user.name}
+                      {c.user.name} {c.user.verified && "✓"}
                     </div>
                     {c.text}
                     <div style={{ display: "flex", gap: 10, marginTop: 4 }}>
-                      <button
-                        style={{
-                          background: "none",
-                          border: "none",
-                          fontSize: 11,
-                          color: V.muted,
-                          cursor: "pointer",
-                          padding: 0,
-                          fontFamily: "'DM Sans',sans-serif",
-                        }}
-                      >
-                        Like
-                      </button>
-                      <button
-                        style={{
-                          background: "none",
-                          border: "none",
-                          fontSize: 11,
-                          color: V.muted,
-                          cursor: "pointer",
-                          padding: 0,
-                          fontFamily: "'DM Sans',sans-serif",
-                        }}
-                      >
-                        Reply
-                      </button>
                       <span style={{ fontSize: 11, color: "#ccc" }}>
                         {c.time}
                       </span>
@@ -1066,93 +1047,6 @@ function PostCard({
         }}
       >
         {post.time}
-      </div>
-
-      {/* Comment input */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          padding: "8px 14px 12px",
-          borderTop: `1px solid ${V.border}`,
-        }}
-      >
-        <img
-          src={ME.avatar}
-          alt=""
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: "50%",
-            objectFit: "cover",
-            flexShrink: 0,
-          }}
-        />
-        <div
-          style={{
-            flex: 1,
-            background: V.sand,
-            border: `1.5px solid ${commentText ? V.pink : "transparent"}`,
-            borderRadius: 100,
-            display: "flex",
-            alignItems: "center",
-            padding: "0 12px",
-            transition: "all .25s",
-            boxShadow: commentText ? "0 0 0 3px rgba(255,108,231,.1)" : "none",
-          }}
-        >
-          <input
-            value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && commentText.trim()) {
-                onComment(commentText.trim());
-                setCommentText("");
-              }
-            }}
-            placeholder="Add a comment…"
-            style={{
-              flex: 1,
-              background: "none",
-              border: "none",
-              outline: "none",
-              fontSize: 13,
-              fontFamily: "'DM Sans',sans-serif",
-              color: V.dark,
-              padding: "8px 0",
-            }}
-          />
-          <button
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: 16,
-            }}
-          >
-            😊
-          </button>
-          {commentText.trim() && (
-            <button
-              onClick={() => {
-                onComment(commentText.trim());
-                setCommentText("");
-              }}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontSize: 13,
-                fontWeight: 700,
-                color: V.pink,
-                padding: "0 4px",
-              }}
-            >
-              Post
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );
@@ -1787,17 +1681,30 @@ function PostPage({ onPost }: { onPost: (text: string, img: string) => void }) {
 }
 
 // ─── PROFILE PAGE ─────────────────────────────────────────────────────────────
-function ProfilePage({ postImages }: { postImages: string[] }) {
+function ProfilePage({ 
+  user, 
+  posts, 
+  onFollow,
+  isFollowed,
+  onSelectPost
+}: { 
+  user: User; 
+  posts: Post[]; 
+  onFollow: () => void;
+  isFollowed: boolean;
+  onSelectPost: (p: Post) => void;
+}) {
   const [activeProfileTab, setActiveProfileTab] = useState<
     "posts" | "reels" | "saved"
   >("posts");
-  const bio = ME.bio;
 
   const tabs = [
     { key: "posts", icon: "⊞", label: "Posts" },
     { key: "reels", icon: "▶", label: "Reels" },
     { key: "saved", icon: "🔖", label: "Saved" },
   ] as const;
+
+  const relevantPosts = posts.filter(p => String(p.user.id) === String(user.id));
 
   return (
     <div style={{ maxWidth: 520, margin: "0 auto", paddingBottom: 24 }}>
@@ -1854,7 +1761,7 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
         >
           <div style={{ position: "relative" }}>
             <img
-              src={ME.avatar}
+              src={user.avatar}
               alt=""
               style={{
                 width: 88,
@@ -1865,25 +1772,27 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
                 boxShadow: "0 4px 20px rgba(0,0,0,.12)",
               }}
             />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 2,
-                right: 2,
-                width: 22,
-                height: 22,
-                background: grad,
-                borderRadius: "50%",
-                border: `2px solid ${V.white}`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 11,
-                color: "#fff",
-              }}
-            >
-              ✓
-            </div>
+            {user.verified && (
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 2,
+                  right: 2,
+                  width: 22,
+                  height: 22,
+                  background: grad,
+                  borderRadius: "50%",
+                  border: `2px solid ${V.white}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 11,
+                  color: "#fff",
+                }}
+              >
+                ✓
+              </div>
+            )}
           </div>
         </div>
 
@@ -1899,10 +1808,10 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
             marginBottom: 3,
           }}
         >
-          {ME.name} <Verified />
+          {user.name} {user.verified && <Verified />}
         </div>
         <div style={{ fontSize: 13, color: V.muted, marginBottom: 8 }}>
-          @{ME.handle}
+          @{user.handle}
         </div>
         <div
           style={{
@@ -1912,7 +1821,7 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
             marginBottom: 14,
           }}
         >
-          {bio}
+          {user.bio}
         </div>
 
         {/* Stats row */}
@@ -1929,9 +1838,9 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
           }}
         >
           {[
-            [String(ME.posts), "Posts"],
-            [ME.followers, "Followers"],
-            [ME.following, "Following"],
+            [String(relevantPosts.length), "Posts"],
+            [String(user.followers), "Followers"],
+            [user.following || "0", "Following"],
           ].map(([val, lbl], i) => (
             <div
               key={i}
@@ -1965,21 +1874,22 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
         {/* Action buttons */}
         <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
           <button
+            onClick={onFollow}
             style={{
               flex: 1,
-              background: grad,
-              border: "none",
+              background: isFollowed ? V.white : grad,
+              border: isFollowed ? `1.5px solid ${V.border}` : "none",
               borderRadius: 100,
               padding: "11px",
               fontSize: 13,
               fontWeight: 700,
-              color: "#fff",
+              color: isFollowed ? V.dark : "#fff",
               cursor: "pointer",
               fontFamily: "'DM Sans',sans-serif",
-              boxShadow: "0 4px 16px rgba(255,108,231,.35)",
+              boxShadow: isFollowed ? "none" : "0 4px 16px rgba(255,108,231,.35)",
             }}
           >
-            ✦ Share Profile
+            {isFollowed ? "✓ Following" : "✦ Follow"}
           </button>
           <button
             style={{
@@ -1995,7 +1905,7 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
               fontFamily: "'DM Sans',sans-serif",
             }}
           >
-            Insights →
+            Share Profile
           </button>
         </div>
 
@@ -2049,9 +1959,10 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
               overflow: "hidden",
             }}
           >
-            {postImages.map((src, i) => (
+            {relevantPosts.map((p, i) => (
               <div
                 key={i}
+                onClick={() => onSelectPost(p)}
                 style={{
                   aspectRatio: "1",
                   overflow: "hidden",
@@ -2060,7 +1971,7 @@ function ProfilePage({ postImages }: { postImages: string[] }) {
                 }}
               >
                 <img
-                  src={src}
+                  src={p.img}
                   alt=""
                   style={{
                     width: "100%",
@@ -2176,11 +2087,11 @@ export default function KiwiGram() {
   const [posts, setPosts] = useState<Post[]>(INITIAL_POSTS);
   const [stories, setStories] = useState<Story[]>(INITIAL_STORIES);
   const [storyIdx, setStoryIdx] = useState<number | null>(null);
-  const [likes, setLikes] = useState<Record<number, boolean>>({});
-  const [saved, setSaved] = useState<Record<number, boolean>>({});
-  const [followed, setFollowed] = useState<Record<number, boolean>>({});
-  const [reactions, setReactions] = useState<Record<number, string | null>>({});
-  const [showCm, setShowCm] = useState<Record<number, boolean>>({});
+  const [likes, setLikes] = useState<Record<string, boolean>>({});
+  const [saved, setSaved] = useState<Record<string, boolean>>({});
+  const [followed, setFollowed] = useState<Record<string, boolean>>({});
+  const [reactions, setReactions] = useState<Record<string, string | null>>({});
+  const [showCm, setShowCm] = useState<Record<string, boolean>>({});
   const [reelLikes, setReelLikes] = useState<Record<number, boolean>>({});
   const [activeTab, setActiveTab] = useState<
     "home" | "explore" | "post" | "reels" | "profile"
@@ -2190,12 +2101,212 @@ export default function KiwiGram() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [exploreCat, setExploreCat] = useState("All");
+  const [viewingUser, setViewingUser] = useState<User | null>(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [suggFollowed, setSuggFollowed] = useState<Record<number, boolean>>({});
   const [employees, setEmployees] = useState<any[]>([]);
   const [meUpdated, setMeUpdated] = useState(0);
+  const [deviceId, setDeviceId] = useState<string>("");
   const notifRef = useRef<HTMLDivElement>(null);
 
   const unreadCount = notifs.filter((n) => n.unread).length;
+
+  useEffect(() => {
+    let id = localStorage.getItem("kg_device_id");
+    if (!id) {
+      id = "dev_" + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem("kg_device_id", id);
+    }
+    setDeviceId(id);
+  }, []);
+
+  // ── URL PERSISTENCE ──
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab") as any;
+    if (tab && ["home", "explore", "post", "reels", "profile"].includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    params.set("tab", activeTab);
+    if (activeTab === "profile" && viewingUser) {
+      params.set("uid", String(viewingUser.id));
+      params.set("utype", viewingUser.type || "User");
+    } else {
+      params.delete("uid");
+      params.delete("utype");
+    }
+    const newPath = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState({ ...window.history.state }, "", newPath);
+  }, [activeTab, viewingUser]);
+
+  // Restore viewingUser from URL once data (employees) is loaded
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab");
+    const uid = params.get("uid");
+    const utype = params.get("utype");
+
+    if (tab === "profile" && uid && employees.length > 0) {
+      if (utype === "Employee") {
+        const emp = employees.find(e => String(e._id) === uid);
+        if (emp) {
+          setViewingUser({
+            id: emp._id,
+            name: emp.name,
+            handle: emp.name.toLowerCase().replace(/\s+/g, "."),
+            avatar: emp.image || ME.avatar,
+            verified: true,
+            bio: emp.role || "",
+            followers: emp.followersCount || 0,
+            following: "0",
+            posts: 0,
+            type: "Employee",
+          });
+        }
+      }
+    }
+  }, [employees]);
+
+  // Fetch real posts from backend and merge with static posts
+  useEffect(() => {
+    if (!deviceId) return;
+
+    fetch("http://localhost:5000/api/posts")
+      .then((res) => res.json())
+      .then((data: any[]) => {
+        if (!data || data.length === 0) return;
+        
+        const initialLikes: Record<string, boolean> = {};
+        const initialFollows: Record<string, boolean> = {};
+
+        const mapped: Post[] = data.map((p) => {
+          // Check if this device liked the post
+          if (p.likedByDevices?.includes(deviceId)) {
+            initialLikes[p._id] = true;
+          }
+
+          const author = p.author;
+          const authorType = p.onModel;
+          const isEmployee = authorType === "Employee";
+
+          // Check if this device follows the author
+          if (author?.followedByDevices?.includes(deviceId)) {
+            initialFollows[author._id] = true;
+          }
+
+          return {
+            id: p._id,
+            user: {
+              id: author?._id || 0,
+              name: author?.name || (isEmployee ? "Team Member" : "Admin"),
+              handle: isEmployee 
+                ? (author?.name || "team").toLowerCase().replace(/\s+/g, ".")
+                : (author?.handle || "kiwi.connect"),
+              avatar: isEmployee 
+                ? (author?.image || ME.avatar)
+                : (author?.avatar || ME.avatar),
+              verified: isEmployee ? true : (author?.verified ?? true),
+              bio: isEmployee ? (author?.role || "") : (author?.bio || ""),
+              followers: author?.followersCount || 0,
+              following: author?.following || "0",
+              posts: 0,
+              type: authorType,
+            },
+            time: new Date(p.createdAt).toLocaleDateString("en-IN", {
+              day: "numeric",
+              month: "short",
+            }),
+            location: p.location || "",
+            img: p.image,
+            caption: p.caption,
+            likes: p.likes || 0,
+            badge: p.badge || null,
+            tags: p.tags || [],
+            music: p.music || null,
+            comments: (p.comments || []).map((c: any) => {
+              const cAuthor = c.author;
+              const cIsEmployee = c.onModel === "Employee";
+              return {
+                user: {
+                  id: cAuthor?._id || 0,
+                  name: cAuthor?.name || (cIsEmployee ? "Team Member" : "Admin"),
+                  handle: cIsEmployee 
+                    ? (cAuthor?.name || "team").toLowerCase().replace(/\s+/g, ".")
+                    : (cAuthor?.handle || "user"),
+                  avatar: cIsEmployee 
+                    ? (cAuthor?.image || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&q=80") 
+                    : (cAuthor?.avatar || ME.avatar),
+                  verified: cIsEmployee ? true : (cAuthor?.verified ?? false),
+                  bio: "",
+                  followers: cAuthor?.followersCount || 0,
+                  following: "0",
+                  posts: 0,
+                  type: c.onModel,
+                },
+                text: c.text,
+                time: new Date(c.createdAt).toLocaleDateString("en-IN"),
+              };
+            }),
+          };
+        });
+
+        setLikes((prev) => ({ ...prev, ...initialLikes }));
+        setFollowed((prev) => ({ ...prev, ...initialFollows }));
+        // Prepend DB posts before static fallback posts
+        setPosts([...mapped, ...INITIAL_POSTS]);
+      })
+      .catch((err) => console.error("Error fetching posts:", err));
+  }, [deviceId, meUpdated]);
+
+  // Fetch real stories
+  useEffect(() => {
+    fetch("http://localhost:5000/api/stories")
+      .then((res) => res.json())
+      .then((data: any[]) => {
+        if (!data || data.length === 0) return;
+        
+        const mapped: Story[] = data.map((s) => {
+          const author = s.author;
+          const isEmployee = s.onModel === "Employee";
+
+          return {
+            user: {
+              id: author?._id || 0,
+              name: author?.name || (isEmployee ? "Team Member" : "Admin"),
+              handle: isEmployee 
+                ? (author?.name || "team").toLowerCase().replace(/\s+/g, ".")
+                : (author?.handle || "kiwi.connect"),
+              avatar: isEmployee 
+                ? (author?.image || ME.avatar)
+                : (author?.avatar || ME.avatar),
+              verified: isEmployee ? true : (author?.verified ?? true),
+              bio: isEmployee ? (author?.role || "") : (author?.bio || ""),
+              followers: author?.followersCount || 0,
+              following: author?.following || "0",
+              posts: 0,
+              type: s.onModel,
+            },
+            img: s.image,
+            caption: s.caption || "",
+            time: "Just now",
+            seen: false,
+          };
+        });
+
+        setStories((prev) => {
+          const realIds = new Set(mapped.map(s => String(s.user.id)));
+          const filteredPrev = prev.filter(s => !realIds.has(String(s.user.id)));
+          return [...mapped, ...filteredPrev];
+        });
+      })
+      .catch((err) => console.error("Error fetching stories:", err));
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/users")
@@ -2239,38 +2350,96 @@ export default function KiwiGram() {
       )
     : USERS;
 
-  function toggleLike(id: number) {
-    setLikes((p) => ({ ...p, [id]: !p[id] }));
+  async function toggleLike(id: string | number) {
+    if (!deviceId) return;
+    const isLiked = !!likes[id];
+    setLikes((p) => ({ ...p, [id]: !isLiked }));
+    
+    try {
+      await fetch(`http://localhost:5000/api/posts/${id}/like`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId }),
+      });
+    } catch (err) {
+      console.error("Error liking post:", err);
+    }
   }
-  function toggleSave(id: number) {
+
+  function toggleSave(id: number | string) {
     setSaved((p) => ({ ...p, [id]: !p[id] }));
   }
-  function setReaction(id: number, e: string) {
+
+  function setReaction(id: number | string, e: string) {
     setReactions((p) => ({ ...p, [id]: e }));
     setLikes((p) => ({ ...p, [id]: true }));
   }
-  function toggleFollow(id: number) {
-    setFollowed((p) => ({ ...p, [id]: !p[id] }));
+
+  async function toggleFollow(id: string | number, authorType?: string) {
+    if (!deviceId) return;
+
+    const isFollowed = !!followed[id];
+    setFollowed((p) => ({ ...p, [id]: !isFollowed }));
+
+    const endpoint = authorType === "Employee" ? "employees" : "users";
+
+    try {
+      await fetch(`http://localhost:5000/api/${endpoint}/${id}/follow`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId }),
+      });
+    } catch (err) {
+      console.error("Error toggling follow:", err);
+    }
   }
-  function toggleShowCm(id: number) {
+
+  function toggleShowCm(id: number | string) {
     setShowCm((p) => ({ ...p, [id]: !p[id] }));
   }
-  function addComment(postId: number, text: string) {
-    setPosts((p) =>
-      p.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              comments: [
-                ...post.comments,
-                { user: ME, text, time: "Just now" },
-              ],
-            }
-          : post,
-      ),
-    );
-    setShowCm((p) => ({ ...p, [postId]: true }));
+
+  async function addComment(postId: string | number, text: string) {
+    try {
+      const res = await fetch(`http://localhost:5000/api/posts/${postId}/comment`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, deviceId }),
+      });
+      
+      if (!res.ok) {
+        const errData = await res.json();
+        alert(errData.message || "Error adding comment");
+        return;
+      }
+
+      setPosts((p) =>
+        p.map((post) =>
+          post.id === postId
+            ? {
+                ...post,
+                comments: [
+                  ...post.comments,
+                  { 
+                    user: {
+                      ...ME,
+                      name: "Guest",
+                      handle: "guest." + deviceId.slice(-4),
+                      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&q=80",
+                    }, 
+                    text, 
+                    time: "Just now" 
+                  },
+                ],
+              }
+            : post,
+        ),
+      );
+      setShowCm((p) => ({ ...p, [postId]: true }));
+    } catch (err) {
+      console.error("Error adding comment:", err);
+    }
   }
+
   function handleNewPost(text: string, img: string) {
     const np: Post = {
       id: Date.now(),
@@ -2966,10 +3135,14 @@ export default function KiwiGram() {
                     followed={!!followed[p.user.id]}
                     onLike={() => toggleLike(p.id)}
                     onSave={() => toggleSave(p.id)}
-                    onFollow={() => toggleFollow(p.user.id)}
+                    onFollow={() => toggleFollow(p.user.id, p.user.type)}
                     onReact={(e) => setReaction(p.id, e)}
                     onComment={(t) => addComment(p.id, t)}
                     onToggleCm={() => toggleShowCm(p.id)}
+                    onViewProfile={(u) => {
+                      setViewingUser(u);
+                      setActiveTab("profile");
+                    }}
                   />
                 </div>
               ))}
@@ -3209,8 +3382,90 @@ export default function KiwiGram() {
           )}
 
           {/* ── PROFILE ── */}
-          {activeTab === "profile" && <ProfilePage postImages={profileImgs} />}
+          {activeTab === "profile" && (
+            <ProfilePage 
+              user={viewingUser || ME} 
+              posts={posts} 
+              onFollow={() => toggleFollow((viewingUser || ME).id, (viewingUser || ME).type)}
+              isFollowed={!!followed[(viewingUser || ME).id]}
+              onSelectPost={setSelectedPost}
+            />
+          )}
         </div>
+
+        {/* Post Modal Overlay */}
+        {selectedPost && (
+          <div
+            onClick={() => setSelectedPost(null)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              background: "rgba(0,0,0,.85)",
+              backdropFilter: "blur(8px)",
+              zIndex: 1000,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 20,
+              animation: "slideUp .3s both",
+            }}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                width: "100%",
+                maxWidth: 480,
+                maxHeight: "90vh",
+                overflowY: "auto",
+                background: "#fff",
+                borderRadius: 24,
+                position: "relative",
+              }}
+            >
+              <button
+                onClick={() => setSelectedPost(null)}
+                style={{
+                  position: "absolute",
+                  top: 15,
+                  right: 15,
+                  zIndex: 2000,
+                  width: 34,
+                  height: 34,
+                  background: "rgba(0,0,0,.4)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 18,
+                }}
+              >
+                ✕
+              </button>
+              <PostCard
+                post={selectedPost}
+                liked={!!likes[selectedPost.id]}
+                saved={!!saved[selectedPost.id]}
+                reaction={reactions[selectedPost.id] || null}
+                showCm={true} // Always show comments in modal
+                followed={!!followed[selectedPost.user.id]}
+                onLike={() => toggleLike(selectedPost.id)}
+                onSave={() => toggleSave(selectedPost.id)}
+                onFollow={() => toggleFollow(selectedPost.user.id, selectedPost.user.type)}
+                onReact={(e) => setReaction(selectedPost.id, e)}
+                onComment={(t) => addComment(selectedPost.id, t)}
+                onToggleCm={() => toggleShowCm(selectedPost.id)}
+                onViewProfile={(u) => {
+                  setViewingUser(u);
+                  setActiveTab("profile");
+                  setSelectedPost(null);
+                }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* ── SIDEBAR (desktop only) ── */}
         <div
@@ -3271,7 +3526,10 @@ export default function KiwiGram() {
                 </div>
               </div>
               <span
-                onClick={() => setActiveTab("profile")}
+                onClick={() => {
+                  setViewingUser(null);
+                  setActiveTab("profile");
+                }}
                 style={{
                   marginLeft: "auto",
                   fontSize: 11.5,
@@ -3350,11 +3608,28 @@ export default function KiwiGram() {
               {employees.map((emp) => (
                 <div
                   key={emp._id}
+                  onClick={() => {
+                    const empUser: User = {
+                      id: emp._id,
+                      name: emp.name,
+                      handle: emp.name.toLowerCase().replace(/\s+/g, "."),
+                      avatar: emp.image || ME.avatar,
+                      verified: true,
+                      bio: emp.role || "",
+                      followers: emp.followersCount || 0,
+                      following: "0",
+                      posts: 0,
+                      type: "Employee",
+                    };
+                    setViewingUser(empUser);
+                    setActiveTab("profile");
+                  }}
                   style={{
                     display: "flex",
                     alignItems: "center",
                     gap: 10,
                     marginBottom: 12,
+                    cursor: "pointer",
                   }}
                 >
                   <img

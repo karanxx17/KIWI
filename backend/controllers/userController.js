@@ -17,14 +17,40 @@ exports.getUserProfile = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   try {
-    const { name, bio, avatar } = req.body;
+    const { name, bio, avatar, followersCount } = req.body;
     const user = await User.findByIdAndUpdate(
       req.userId,
-      { name, bio, avatar },
+      { name, bio, avatar, followersCount },
       { new: true },
     ).select("-password");
 
     res.json({ message: "Profile updated", user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.followUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { deviceId } = req.body;
+    const user = await User.findById(id);
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    if (!user.followedByDevices) user.followedByDevices = [];
+
+    const index = user.followedByDevices.indexOf(deviceId);
+    if (index === -1) {
+      user.followedByDevices.push(deviceId);
+      user.followersCount++;
+    } else {
+      user.followedByDevices.splice(index, 1);
+      user.followersCount--;
+    }
+
+    await user.save();
+    res.json({ followersCount: user.followersCount, isFollowed: index === -1 });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

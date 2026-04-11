@@ -6,6 +6,8 @@ const employeeSchema = new mongoose.Schema(
     role: { type: String, required: true },
     image: { type: String, default: "https://via.placeholder.com/150" },
     bio: { type: String, default: "" },
+    followersCount: { type: Number, default: 0 },
+    followedByDevices: [{ type: String }],
   },
   { timestamps: true }
 );
