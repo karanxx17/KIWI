@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useRef, type RefObject } from "react";
 import Navbar from "@/app/components/Navbar";
+import { useRouter } from "next/navigation";
 
 
 const SERVICES = [
   {
-    id: "smm", icon: "📱", tag: "01",
+    id: "Social-Media-Marketing", icon: "📱", tag: "01",
     title: "Social Media Marketing",
     short: "Build a powerful community that converts.",
     desc: "Build a strong social media presence with expert management services. We create engaging content, manage profiles, and run campaigns to boost engagement and grow your following across every platform.",
@@ -132,7 +133,7 @@ const PROCESS = [
 ];
 
 const FILTER_MAP = {
-  Growth: ["smm", "seo", "ads", "youtube", "influencer", "email"],
+  Growth: ["Social-Media-Marketing", "seo", "ads", "youtube", "influencer", "email"],
   Creative: ["content", "reels", "brand"],
   Technical: ["web", "gmb"],
 };
@@ -257,6 +258,7 @@ function HeroSection() {
 
 /* ─── SERVICE CARD ──────────────────────── */
 function ServiceCard({ s, i, inView }: { s: (typeof SERVICES)[number]; i: number; inView: boolean }) {
+  const router = useRouter();
   const [hov, setHov] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -311,10 +313,20 @@ function ServiceCard({ s, i, inView }: { s: (typeof SERVICES)[number]; i: number
             {expanded ? "Show less ↑" : "What's included ↓"}
           </button>
           <button
-            style={{ padding: "8px 16px", borderRadius: 100, background: hov ? s.accent : "#F2EFE9", color: hov ? "#fff" : "#444", border: "none", cursor: "pointer", fontSize: 12, fontWeight: 700, fontFamily: "'DM Sans',sans-serif", transition: "all 0.3s", whiteSpace: "nowrap" }}
-            onMouseEnter={e => { e.currentTarget.style.background = s.accent; e.currentTarget.style.color = "#fff"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = hov ? s.accent : "#F2EFE9"; e.currentTarget.style.color = hov ? "#fff" : "#444"; }}
-          >Get Started →</button>
+  onClick={() => router.push(`/services/${s.id}`)}
+  style={{
+    padding: "8px 16px",
+    borderRadius: 100,
+    background: hov ? s.accent : "#F2EFE9",
+    color: hov ? "#fff" : "#444",
+    border: "none",
+    cursor: "pointer",
+    fontSize: 12,
+    fontWeight: 700,
+  }}
+>
+  Get Started →
+</button>
         </div>
       </div>
     </div>

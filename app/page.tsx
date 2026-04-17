@@ -1,5 +1,11 @@
 "use client";
-import { useState, useEffect, useRef, type MouseEvent, type RefObject } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  type MouseEvent,
+  type RefObject,
+} from "react";
 import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 
@@ -45,81 +51,90 @@ const SERVICES = [
 ];
 
 const STATS = [
-  { value: "17+", label: "Years of Expertise" },
-  { value: "340+", label: "Brands Scaled" },
-  { value: "4.2×", label: "Avg. ROAS Delivered" },
-  { value: "98%", label: "Client Retention" },
+  { value: "More Leads", label: "Consistent Pipeline Growth" },
+  { value: "Better Reach", label: "Right Audience Targeting" },
+  { value: "Conversions", label: "Optimized Sales Funnels" },
+  { value: "Branding", label: "Strong Market Positioning" },
 ];
 
 const WORK = [
   {
     img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-    client: "NovaPulse",
-    category: "Brand Strategy + Social",
-    result: "+320% engagement",
+    client: "Content Creation",
+    category: "Scroll-Stopping Posts",
+    result: "More Engagement",
   },
   {
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    client: "Terrax Realty",
-    category: "Performance Marketing",
-    result: "4.8× ROAS",
+    client: "Ad Campaigns",
+    category: "Targeted Performance Ads",
+    result: "Quality Leads",
   },
   {
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-    client: "Lumē Skincare",
-    category: "SEO + Content + UX",
-    result: "#1 on 60+ keywords",
+    client: "SEO Growth",
+    category: "Ranking + Traffic",
+    result: "Better Visibility",
   },
   {
     img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
-    client: "Stackr Finance",
-    category: "Full-funnel Digital",
-    result: "2.1× MoM growth",
+    client: "Branding",
+    category: "Identity + Positioning",
+    result: "Strong Presence",
   },
 ];
 
 const TESTIMONIALS = [
   {
-    quote: "Kiwi Connect didn't just run our campaigns — they fundamentally changed how we think about growth. Our revenue tripled in 14 months.",
+    quote:
+      "Kiwi Connect didn't just run our campaigns — they fundamentally changed how we think about growth. Our revenue tripled in 14 months.",
     name: "Priya Mehta",
-    role: "CEO, Lumē Skincare",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+    // role: "CEO, Lumē Skincare",
+    avatar:
+      "https://plus.unsplash.com/premium_photo-1682089844121-6e7d9edc30ff?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    quote: "I've worked with five agencies before. None came close to the strategic depth and execution speed of this team.",
+    quote:
+      "I've worked with five agencies before. None came close to the strategic depth and execution speed of this team.",
     name: "Arjun Shetty",
-    role: "Founder, Stackr Finance",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    // role: "Founder, Stackr Finance",
+    avatar:
+      "https://images.unsplash.com/flagged/photo-1571367034861-e6729ad9c2d5?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    quote: "Every metric we care about moved in the right direction — within weeks, not months.",
+    quote:
+      "Every metric we care about moved in the right direction — within weeks, not months.",
     name: "Kavita Rao",
-    role: "CMO, NovaPulse",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80",
+    // role: "CMO, NovaPulse",
+    avatar:
+      "https://plus.unsplash.com/premium_photo-1682089810582-f7b200217b67?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
 const CLIENTS = [
-  "https://img.logo.dev/meta.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/netflix.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/figma.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/mcdonalds.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/google.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/visa.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/porsche.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
-  "https://img.logo.dev/facebook.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=dark",
+  "/clients/client1.png",
+  "/clients/client2.png",
+  "/clients/client3.png",
+  "/clients/client4.png",
+  "/clients/client5.png",
+  "/clients/client6.png",
+  "/clients/client7.png",
 ];
 
-// ─────────────────────────────────────────
-// useInView hook
-// ─────────────────────────────────────────
-function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.1): [RefObject<T | null>, boolean] {
+function useInView<T extends HTMLElement = HTMLDivElement>(
+  threshold = 0.1,
+): [RefObject<T | null>, boolean] {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { threshold }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold },
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
@@ -132,22 +147,11 @@ function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.1): [Re
 // ─────────────────────────────────────────
 function HeroSection() {
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => { setTimeout(() => setLoaded(true), 80); }, []);
-
-  // return (
-  //   <section className="hero">
-  //     <div className="hero__blob hero__blob--tr" />
-  //     <div className="hero__blob hero__blob--bl" />
-
-  //     {/* <div className={`hero__badge${loaded ? " hero__badge--in" : ""}`}>
-  //       <span className="hero__badge-dot" />
-  //       <span>17 Years of Digital Excellence</span>
-  //     </div> */}
-      
-
-    return (
+  useEffect(() => {
+    setTimeout(() => setLoaded(true), 80);
+  }, []);
+  return (
     <section className="hero relative overflow-hidden min-h-screen">
-      
       {/* --- BUBBLE ANIMATION LAYER --- */}
       <div className="bubble-container">
         <div className="bubble bubble--1" />
@@ -158,16 +162,20 @@ function HeroSection() {
         <div className="bubble-noise" />
       </div>
 
-  
       <div className="relative z-10 container mx-auto text-center">
         <h1 className={`hero__headline${loaded ? " hero__headline--in" : ""}`}>
-          Marketing That<br />
-          <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>Actually Grows</em><br />
+          Marketing That
+          <br />
+          <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>
+            Actually Grows
+          </em>
+          <br />
           Your Business.
         </h1>
 
         <p className={`hero__sub${loaded ? " hero__sub--in" : ""}`}>
-          Kiwi Connect Digital is a full-service growth agency. We blend strategy, creativity, and data to build marketing that converts.
+          Kiwi Connect Digital is a full-service growth agency. We blend
+          strategy, creativity, and data to build marketing that converts.
         </p>
 
         <div className={`hero__ctas${loaded ? " hero__ctas--in" : ""}`}>
@@ -178,24 +186,73 @@ function HeroSection() {
             <button className="btn btn--outline">View Our Services</button>
           </Link>
         </div>
-      </div> 
+      </div>
 
       {/* Hero Image Grid */}
       <div className={`hero__grid${loaded ? " hero__grid--in" : ""}`}>
         <div className="hero__grid-main">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85" alt="Team" className="hero__grid-img" />
+          <img
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85"
+            alt="Team"
+            className="hero__grid-img"
+          />
           <div className="hero__grid-caption">
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#ff6ce7", letterSpacing: "0.5px", textTransform: "uppercase" }}>STRATEGY & VISION</div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#1A1A1A" }}>Building brands that last</div>
+            <div
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                color: "#ff6ce7",
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+              }}
+            >
+              STRATEGY & VISION
+            </div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#1A1A1A" }}>
+              Building brands that last
+            </div>
           </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=85" alt="Analytics" className="hero__grid-img hero__grid-img--sm" />
+        <img
+          src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=85"
+          alt="Analytics"
+          className="hero__grid-img hero__grid-img--sm"
+        />
         <div className="hero__grid-stat">
-          <div style={{ fontSize: 48, fontWeight: 900, color: "#fff", lineHeight: 1 }}>4.2×</div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", textAlign: "center", marginTop: 8 }}>Average ROAS<br />across all clients</div>
+          <div
+            style={{
+              fontSize: 48,
+              fontWeight: 900,
+              color: "#fff",
+              lineHeight: 1,
+            }}
+          >
+            4.2×
+          </div>
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              color: "rgba(255,255,255,0.9)",
+              textAlign: "center",
+              marginTop: 8,
+            }}
+          >
+            Average ROAS
+            <br />
+            across all clients
+          </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&q=85" alt="Creative" className="hero__grid-img hero__grid-img--sm" />
-        <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=85" alt="Data" className="hero__grid-img hero__grid-img--sm" />
+        <img
+          src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&q=85"
+          alt="Creative"
+          className="hero__grid-img hero__grid-img--sm"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=85"
+          alt="Data"
+          className="hero__grid-img hero__grid-img--sm"
+        />
       </div>
     </section>
   );
@@ -209,7 +266,11 @@ function StatsBar() {
   return (
     <section ref={ref} className="stats">
       {STATS.map((s, i) => (
-        <div key={i} className={`stats__item${inView ? " stats__item--in" : ""}`} style={{ transitionDelay: `${i * 0.1}s` }}>
+        <div
+          key={i}
+          className={`stats__item${inView ? " stats__item--in" : ""}`}
+          style={{ transitionDelay: `${i * 0.1}s` }}
+        >
           <div className="stats__value">{s.value}</div>
           <div className="stats__label">{s.label}</div>
         </div>
@@ -230,13 +291,18 @@ function ServicesSection() {
           <div className="services__header-left">
             <div className="eyebrow">What We Do</div>
             <h2 className="heading-lg">
-              Services built for<br /><em style={{ fontStyle: "italic", color: "#ff6ce7" }}>real results.</em>
+              Services built for
+              <br />
+              <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>
+                real results.
+              </em>
             </h2>
           </div>
-          
+
           {/* Changed: Removed conditional classes */}
           <p className="services__header-desc">
-            From brand building to performance campaigns, we offer end-to-end marketing solutions powered by 17 years of hard-earned expertise.
+            From brand building to high-performance campaigns, we deliver
+            end-to-end marketing solutions built on real results.
           </p>
         </div>
 
@@ -251,9 +317,9 @@ function ServicesSection() {
 }
 
 // Removed: inView prop as it's no longer needed for visibility
-function ServiceCard({ s }: { s: typeof SERVICES[0] }) {
+function ServiceCard({ s }: { s: (typeof SERVICES)[0] }) {
   const [hov, setHov] = useState(false);
-  
+
   return (
     <div
       onMouseEnter={() => setHov(true)}
@@ -268,56 +334,17 @@ function ServiceCard({ s }: { s: typeof SERVICES[0] }) {
       <h3 className="service-card__title">{s.title}</h3>
       <p className="service-card__desc">{s.desc}</p>
       <div className="service-card__link">
-        Learn more <span className={`service-card__arrow${hov ? " service-card__arrow--hov" : ""}`}>→</span>
+        Learn more{" "}
+        <span
+          className={`service-card__arrow${hov ? " service-card__arrow--hov" : ""}`}
+        >
+          →
+        </span>
       </div>
     </div>
   );
 }
 
-// ─────────────────────────────────────────
-// Work
-// ─────────────────────────────────────────
-function WorkSection() {
-  const [ref, inView] = useInView();
-  return (
-    <section id="work" ref={ref} className="section section--sand">
-      <div className="container">
-        <div className={`text-center mb-lg${inView ? " fade-in" : ""}`}>
-          <div className="eyebrow">Case Studies</div>
-          <h2 className="heading-lg">Work that speaks louder.</h2>
-        </div>
-        <div className="work__grid">
-          {WORK.map((w, i) => (
-            <WorkCard key={i} w={w} i={i} inView={inView} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-function WorkCard({ w, i, inView }: { w: typeof WORK[0]; i: number; inView: boolean }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <div
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      className={`work-card${hov ? " work-card--hov" : ""}${inView ? " work-card--in" : ""}`}
-      style={{ transitionDelay: `${i * 0.12}s` }}
-    >
-      <img src={w.img} alt={w.client} className={`work-card__img${hov ? " work-card__img--hov" : ""}`} />
-      <div className={`work-card__overlay${hov ? " work-card__overlay--hov" : ""}`} />
-      <div className="work-card__content">
-        <div className="work-card__category">{w.category}</div>
-        <div className="work-card__bottom">
-          <div className="work-card__client">{w.client}</div>
-          <div className={`work-card__result${hov ? " work-card__result--hov" : ""}`}>{w.result}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 // ─────────────────────────────────────────
 // About
@@ -330,31 +357,76 @@ function AboutSection() {
         <div className="about__grid">
           {/* Image cluster */}
           <div className={`about__images${inView ? " about__images--in" : ""}`}>
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&q=85" alt="Team" className="about__img-main" />
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=85" alt="Office" className="about__img-second" />
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&q=85"
+              alt="Team"
+              className="about__img-main"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=85"
+              alt="Work"
+              className="about__img-second"
+            />
+
+            {/* Badge */}
             <div className="about__badge">
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 32, fontWeight: 900, color: "#fff", lineHeight: 1 }}>17</div>
-              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 700, marginTop: 4 }}>Years of<br />Expertise</div>
+              <div
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: 28,
+                  fontWeight: 900,
+                  color: "#fff",
+                  lineHeight: 1,
+                }}
+              >
+                Growth
+              </div>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.85)",
+                  fontWeight: 700,
+                  marginTop: 4,
+                }}
+              >
+                Focused
+                <br />
+                Agency
+              </div>
             </div>
           </div>
 
           {/* Text */}
           <div className={`about__text${inView ? " about__text--in" : ""}`}>
             <div className="eyebrow">About Kiwi Connect</div>
+
             <h2 className="heading-lg">
-              We're not just an agency.<br />We're your <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>growth partners.</em>
+              We're not just an agency.
+              <br />
+              We're your{" "}
+              <em style={{ fontStyle: "italic", color: "#ff6ce7" }}>
+                growth partners.
+              </em>
             </h2>
+
             <p className="body-text">
-              Founded in 2007, Kiwi Connect Digital has spent 17 years at the intersection of strategy, creativity, and technology. We've worked with startups and Fortune 500s, local heroes and global brands.
+              Kiwi Connect Digital is a young and fast-growing marketing agency
+              built for startups and modern businesses. We focus on what
+              actually matters — generating leads, building brands, and driving
+              real growth.
             </p>
+
             <p className="body-text">
-              Our philosophy is simple: marketing should generate measurable, compounding growth. Every campaign, every creative decision, every rupee is accountable to that north star.
+              We may be new, but we move fast, think smart, and execute with
+              precision. Our approach is simple: no fluff, no guesswork — just
+              strategies that work.
             </p>
+
             <div className="about__pillars">
               {[
-                ["Strategy First", "We diagnose before we prescribe."],
-                ["Data-Driven", "Every decision is backed by numbers."],
-                ["Full Funnel", "We own the journey end-to-end."],
+                ["Startup Mindset", "Fast, flexible, and built for growth."],
+                ["Performance Focus", "Every action tied to results."],
+                ["Execution First", "Ideas are nothing without action."],
               ].map(([title, sub]) => (
                 <div key={title} className="pillar">
                   <div className="pillar__dot" />
@@ -403,29 +475,67 @@ function EmployeesSection() {
           <div className="eyebrow">Our Team</div>
           <h2 className="heading-lg">The minds behind the magic.</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "30px",
+          }}
+        >
           {employees.map((emp, i) => (
-            <div 
-              key={emp._id} 
+            <div
+              key={emp._id}
               style={{
-                background: '#fff',
-                borderRadius: '20px',
-                padding: '30px',
-                textAlign: 'center',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-                transform: inView ? 'translateY(0)' : 'translateY(20px)',
+                background: "#fff",
+                borderRadius: "20px",
+                padding: "30px",
+                textAlign: "center",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+                transform: inView ? "translateY(0)" : "translateY(20px)",
                 opacity: inView ? 1 : 0,
-                transition: `all 0.6s ease ${i * 0.1}s`
+                transition: `all 0.6s ease ${i * 0.1}s`,
               }}
             >
-              <img 
-                src={emp.image || "https://via.placeholder.com/150"} 
-                alt={emp.name} 
-                style={{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 20px', border: '3px solid #ff6ce7' }} 
+              <img
+                src={emp.image || "https://via.placeholder.com/150"}
+                alt={emp.name}
+                style={{
+                  width: "120px",
+                  height: "120px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  margin: "0 auto 20px",
+                  border: "3px solid #ff6ce7",
+                }}
               />
-              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: '20px', fontWeight: 800, color: '#1A1A1A', marginBottom: '8px' }}>{emp.name}</h3>
-              <p style={{ fontSize: '13px', fontWeight: 700, color: '#ff6ce7', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>{emp.role}</p>
-              {emp.bio && <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>{emp.bio}</p>}
+              <h3
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "20px",
+                  fontWeight: 800,
+                  color: "#1A1A1A",
+                  marginBottom: "8px",
+                }}
+              >
+                {emp.name}
+              </h3>
+              <p
+                style={{
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  color: "#ff6ce7",
+                  textTransform: "uppercase",
+                  letterSpacing: "1px",
+                  marginBottom: "12px",
+                }}
+              >
+                {emp.role}
+              </p>
+              {emp.bio && (
+                <p style={{ fontSize: "14px", color: "#666", lineHeight: 1.6 }}>
+                  {emp.bio}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -450,7 +560,14 @@ function ClientsSection() {
               className={`clients__logo${inView ? " clients__logo--in" : ""}`}
               style={{ transitionDelay: `${i * 0.06}s` }}
             >
-              <img src={url} alt="client" style={{ height: 26, objectFit: "contain" }} onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              <img
+                src={url}
+                alt="client"
+                style={{ height: 80, objectFit: "contain" }}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                }}
+              />
             </div>
           ))}
         </div>
@@ -477,10 +594,16 @@ function TestimonialsSection() {
           <div className="testimonial__quote-mark">"</div>
           <p className="testimonial__text">{TESTIMONIALS[active].quote}</p>
           <div className="testimonial__author">
-            <img src={TESTIMONIALS[active].avatar} alt="" className="testimonial__avatar" />
+            <img
+              src={TESTIMONIALS[active].avatar}
+              alt=""
+              className="testimonial__avatar"
+            />
             <div>
-              <div className="testimonial__name">{TESTIMONIALS[active].name}</div>
-              <div className="testimonial__role">{TESTIMONIALS[active].role}</div>
+              <div className="testimonial__name">
+                {TESTIMONIALS[active].name}
+              </div>
+              {/* <div className="testimonial__role">{TESTIMONIALS[active].role}</div> */}
             </div>
           </div>
         </div>
@@ -512,16 +635,28 @@ function CTASection() {
           <div className="cta-block__text">
             <div className="eyebrow eyebrow--green">Ready to scale?</div>
             <h2 className="heading-lg heading--white">
-              Let's build something<br />
-              <em style={{ fontStyle: "italic", color: "#ba3aff" }}>extraordinary together.</em>
+              Let's build something
+              <br />
+              <em style={{ fontStyle: "italic", color: "#ba3aff" }}>
+                extraordinary together.
+              </em>
             </h2>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", fontWeight: 500, marginTop: 12 }}>
+            <p
+              style={{
+                fontSize: 15,
+                color: "rgba(255,255,255,0.5)",
+                fontWeight: 500,
+                marginTop: 12,
+              }}
+            >
               Free strategy audit included. No commitment required.
             </p>
           </div>
           <div className="cta-block__actions">
-            <button className="btn btn--primary">Get Free Audit →</button>
-            <button className="btn btn--ghost">Schedule a Call</button>
+            <Link href="/contact">
+              <button className="btn btn--primary">Get Free Audit →</button>
+            </Link>
+            {/* <button className="btn btn--ghost">Schedule a Call</button> */}
           </div>
         </div>
       </div>
@@ -535,35 +670,100 @@ function CTASection() {
 function Footer() {
   const MENU: [string, string[]][] = [
     ["Company", ["About", "Work", "Services", "Blog", "Careers"]],
-    ["Services", ["Brand Strategy", "Performance", "SEO & Content", "Social Media", "Web & UX"]],
-    ["Contact", ["kiwiconnectdigital@gmail.com", "+91 8305959538, +91 6261610281", "Bhopal, India", "LinkedIn", "Twitter"]],
+    [
+      "Services",
+      [
+        "Brand Strategy",
+        "Performance",
+        "SEO & Content",
+        "Social Media",
+        "Web & UX",
+      ],
+    ],
+    [
+      "Contact",
+      [
+        "kiwiconnectdigital@gmail.com",
+        "+91 8305959538, +91 6261610281",
+        "Bhopal, India",
+        "LinkedIn",
+        "Twitter",
+      ],
+    ],
   ];
 
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__grid">
+          {/* Brand */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <img src="/kiwilogo.png" alt="Kiwi Connect Digital" style={{ width: 36, height: 36, objectFit: "contain" }} />
-              <span className="footer__logo-text">Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span></span>
+              <img
+                src="/kiwilogo.png"
+                alt="Kiwi Connect Digital"
+                style={{ width: 36, height: 36, objectFit: "contain" }}
+              />
+              <span className="footer__logo-text">
+                Kiwi Connect <span style={{ color: "#ff6ce7" }}>Digital</span>
+              </span>
             </div>
-            <p className="footer__tagline">Growth-driven marketing for ambitious brands. 17 years. 340+ clients. Counting.</p>
+
+            <p className="footer__tagline">
+              Growth-driven marketing for ambitious brands. Built for results,
+              focused on scale.
+            </p>
+
+            {/* CTA */}
+            <div className="footer__cta">
+              <div className="footer__cta-text">
+                Ready to grow your business?
+              </div>
+              {/* <a href="#contact" className="footer__cta-btn">Get Free Consultation</a> */}
+            </div>
           </div>
 
-          {MENU.map(([title, items]) => (
-            <div key={title} className="footer__col">
-              <div className="footer__col-title">{title}</div>
-              {items.map((item) => (
-                <div key={item} className="footer__col-item">{item}</div>
-              ))}
+          {/* Services */}
+          <div className="footer__col">
+            <div className="footer__col-title">Services</div>
+            <div className="footer__col-item">Social Media Marketing</div>
+            <div className="footer__col-item">Performance Ads</div>
+            <div className="footer__col-item">SEO Optimization</div>
+            <div className="footer__col-item">Website Development</div>
+            <div className="footer__col-item">Branding & Design</div>
+          </div>
+
+          {/* Company */}
+          <div className="footer__col">
+            <div className="footer__col-title">Company</div>
+            <div className="footer__col-item">About Us</div>
+            <div className="footer__col-item">Our Process</div>
+            <div className="footer__col-item">Contact</div>
+            <div className="footer__col-item">Careers</div>
+          </div>
+
+          {/* Contact */}
+          <div className="footer__col">
+            <div className="footer__col-title">Contact</div>
+            <div className="footer__col-item">📞 +91 83059 59538</div>
+            <div className="footer__col-item">
+              📧 kiwiconnectdigital@gmail.com.com
             </div>
-          ))}
+            <div className="footer__col-item">📍 India</div>
+
+            {/* Socials */}
+            <div style={{ marginTop: 12 }}>
+              <div className="footer__col-item">Instagram</div>
+              <div className="footer__col-item">LinkedIn</div>
+              <div className="footer__col-item">Facebook</div>
+            </div>
+          </div>
         </div>
 
+        {/* Bottom */}
         <div className="footer__bottom">
           <div>© 2026 Kiwi Connect Digital. All rights reserved.</div>
-          <div>Crafted by Kiwi Connect</div>
+          <div>Crafted with 💜 by Kiwi Connect</div>
         </div>
       </div>
     </footer>
@@ -1137,11 +1337,10 @@ export default function KiwiConnectDigital() {
         @media (min-width: 768px) { .clients__logos { gap: 48px; } }
 
         .clients__logo {
-          opacity: 0; filter: grayscale(1);
           transform: translateY(16px);
           transition: all 0.6s ease, opacity 0.3s, filter 0.3s;
         }
-        .clients__logo--in { opacity: 0.45; transform: translateY(0); }
+        .clients__logo--in { transform: translateY(0); }
         .clients__logo:hover { opacity: 1 !important; filter: grayscale(0) !important; }
 
         /* ── TESTIMONIALS ──────────────────── */
@@ -1292,7 +1491,7 @@ export default function KiwiConnectDigital() {
       <HeroSection />
       <StatsBar />
       <ServicesSection />
-      <WorkSection />
+      {/* <WorkSection /> */}
       <AboutSection />
       <EmployeesSection />
       <ClientsSection />

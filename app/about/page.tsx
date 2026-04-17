@@ -513,7 +513,7 @@ export default function AboutPage() {
         .cta-inner { padding: clamp(36px,5vw,80px) clamp(24px,5vw,80px); display: flex; flex-direction: column; gap: 28px; position: relative; z-index: 1; }
         @media (min-width: 768px) { .cta-inner { flex-direction: row; justify-content: space-between; align-items: center; gap: 48px; } }
       `}</style>
-      <Navbar activePage="About" />
+      <Navbar />
       <HeroSection />
       <MissionVision />
       <StorySection />
