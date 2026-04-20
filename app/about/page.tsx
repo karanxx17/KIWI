@@ -43,20 +43,20 @@ const VALUES: Value[] = [
 ];
 
 const MILESTONES: Milestone[] = [
-  { year: "2007", event: "Founded in Mumbai with a team of 4 marketers and one shared dream." },
-  { year: "2010", event: "Crossed 50 active clients. Launched our first in-house creative studio." },
-  { year: "2014", event: "Expanded into SEO, content, and full-funnel performance marketing." },
-  { year: "2018", event: "Opened offices in Delhi & Bangalore. Team grew to 60+ specialists." },
-  { year: "2021", event: "Launched our proprietary analytics platform: KiwiMetrics™." },
-  { year: "2024", event: "340+ brands scaled. ₹500Cr+ in attributed client revenue generated." },
+  { year: "Discovery Call", event: "We understand your business, goals, target audience, and current challenges in detail." },
+  { year: "Strategy Blueprint", event: "We create a customized growth plan covering content, ads, funnels, and positioning." },
+  { year: "Brand & Asset Setup", event: "We optimize your profiles, creatives, tracking systems, and digital presence." },
+  { year: "Execution Begins", event: "Content goes live, ad campaigns are launched, and funnels start working." },
+  { year: "Optimization & Scaling", event: "We continuously test, analyze, and scale what works to maximize ROI." },
+  { year: "Reporting & Growth Review", event: "You get clear reports, insights, and next-step strategies every month." },
 ];
 
 const CULTURE_IMGS: CultureImg[] = [
-  { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=700&q=85", label: "Strategy Sprints", tall: true },
-  { src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&q=85", label: "Team Offsites", tall: false },
-  { src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=85", label: "Creative Studio", tall: false },
-  { src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=500&q=85", label: "Award Nights", tall: false },
-  { src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=85", label: "Client Wins", tall: false },
+  { src: "/about/Strategy Sprints.jpeg", label: "Aman Singh Rajpoot, CTO", tall: true },
+  { src: "/about/kiwi2.jpeg", label: "Vaishali Singh , CEO", tall: false },
+  { src: "/about/kiwi3.jpeg", label: "Strength", tall: false },
+  { src: "/about/kiwi4.jpeg", label: "Kalpana Banwari , CMO", tall: false },
+  { src: "/about/office3.jpeg", label: "Founders", tall: false },
 ];
 
 /* ─── HOOK ──────────────────────────────── */
@@ -116,7 +116,7 @@ function HeroSection() {
         <div className="hero-image-mobile">
           <div style={{ borderRadius: 22, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.14)", position: "relative" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85" alt="Team" style={{ width: "100%", height: 280, objectFit: "cover", display: "block" }} />
+            <img src="/about/office.jpeg" alt="Team" style={{ width: "100%", height: 280, objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.45) 0%,transparent 55%)" }} />
             <div style={{ position: "absolute", bottom: 18, left: 18 }}>
               <div style={{ fontSize: 11, fontWeight: 800, color: "#ba3aff", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2007</div>
@@ -126,10 +126,10 @@ function HeroSection() {
           <div style={{ display: "flex", gap: 12, marginTop: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <div style={{ background: "#fff", borderRadius: 14, padding: "13px 18px", boxShadow: "0 4px 20px rgba(0,0,0,0.08)", display: "flex", gap: 12, alignItems: "center" }}>
               <div style={{ width: 38, height: 38, borderRadius: 10, background: "#E8F7D8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🏆</div>
-              <div><div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#1A1A1A", lineHeight: 1 }}>340+</div><div style={{ fontSize: 11, color: "#888", fontWeight: 600 }}>Brands Scaled</div></div>
+              <div><div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#1A1A1A", lineHeight: 1 }}>70+</div><div style={{ fontSize: 11, color: "#888", fontWeight: 600 }}>Brands Scaled</div></div>
             </div>
             <div style={{ background: "#ff6ce7", borderRadius: 14, padding: "13px 18px", boxShadow: "0 8px 32px rgba(109,191,62,0.35)", display: "flex", gap: 12, alignItems: "center" }}>
-              <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff", lineHeight: 1 }}>17 yrs</div>
+              <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff", lineHeight: 1 }}>5 yrs</div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>of Expertise</div>
             </div>
           </div>
@@ -139,27 +139,27 @@ function HeroSection() {
         <div className="hero-image-desktop" style={{ position: "relative", height: 480 }}>
           <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", top: 0, width: "44%", height: "100%", borderRadius: 28, overflow: "hidden", boxShadow: "0 24px 72px rgba(0,0,0,0.14)" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85" alt="Team" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src="/about/office.jpeg" alt="Team" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.45) 0%,transparent 55%)" }} />
             <div style={{ position: "absolute", bottom: 24, left: 24 }}>
-              <div style={{ fontSize: 12, fontWeight: 800, color: "#ba3aff", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2007</div>
-              <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff" }}>Mumbai, India</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "#ba3aff", letterSpacing: "1.5px", textTransform: "uppercase" }}>Est. 2024</div>
+              <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff" }}>Bhopal, India</div>
             </div>
           </div>
           <div style={{ position: "absolute", left: "2%", top: "10%", width: "28%", height: "72%", borderRadius: 22, overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.12)", transform: "rotate(-2deg)" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=85" alt="Strategy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src="/about/office3.jpeg" alt="Strategy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <div style={{ position: "absolute", right: "2%", top: "8%", width: "26%", height: "68%", borderRadius: 22, overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.12)", transform: "rotate(1.5deg)" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=85" alt="Creative" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src="/about/office2.jpeg" alt="Creative" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <div style={{ position: "absolute", left: "6%", bottom: "2%", background: "#fff", borderRadius: 16, padding: "14px 18px", boxShadow: "0 8px 32px rgba(0,0,0,0.1)", display: "flex", gap: 12, alignItems: "center" }}>
             <div style={{ width: 42, height: 42, borderRadius: 11, background: "#E8F7D8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>🏆</div>
-            <div><div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#1A1A1A", lineHeight: 1 }}>340+</div><div style={{ fontSize: 12, color: "#888", fontWeight: 600 }}>Brands Scaled</div></div>
+            <div><div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#1A1A1A", lineHeight: 1 }}>70+</div><div style={{ fontSize: 12, color: "#888", fontWeight: 600 }}>Brands Scaled</div></div>
           </div>
           <div style={{ position: "absolute", right: "6%", bottom: "2%", background: "#ff6ce7", borderRadius: 16, padding: "14px 18px", boxShadow: "0 8px 32px rgba(109,191,62,0.35)", display: "flex", gap: 12, alignItems: "center" }}>
-            <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff", lineHeight: 1 }}>17 yrs</div>
+            <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 800, color: "#fff", lineHeight: 1 }}>5 yrs</div>
             <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>of Expertise</div>
           </div>
         </div>
@@ -249,10 +249,10 @@ function StorySection() {
             </div>
             <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.9s ease 0.28s", marginTop: 36, borderRadius: 18, overflow: "hidden", height: 240, position: "relative" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85" alt="Office" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src="/about/office.jpeg" alt="Office" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,rgba(0,0,0,0.4) 0%,transparent 60%)" }} />
               <div style={{ position: "absolute", bottom: 20, left: 20 }}>
-                <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 17, fontWeight: 800, color: "#fff" }}>Our Mumbai HQ</div>
+                <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 17, fontWeight: 800, color: "#fff" }}>Our Bhopal Office</div>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>Where every great campaign begins</div>
               </div>
             </div>

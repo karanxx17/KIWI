@@ -11,7 +11,8 @@ const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(WA_LINK)}&bgcolor=ffffff&color=1A1A1A&margin=10`;
 
 const CONTACT_INFO = [
-  { icon: "📍", label: "Office Address", lines: [" Second Floor, R-59, GRP Colony, Zone 2, Maharana Pratap Nagar, Bhopal, Madhya Pradesh 462011"], accent: "#ff6ce7", light: "#EBF8D8", action: null },
+  { icon: "📍", label: "Bhopal Office", lines: [" Second Floor, R-59, GRP Colony, Zone 2, Maharana Pratap Nagar, Bhopal, Madhya Pradesh 462011,"], accent: "#ff6ce7", light: "#EBF8D8", action: null },
+  { icon: "📍", label: "Indore Office", lines: [" 303, Hello World Victor, Plot No. 47, Chikitsak Nagar, Indore, MP 452010,"], accent: "#ff6ce7", light: "#EBF8D8", action: null },
   { icon: "📞", label: "Call / WhatsApp", lines: ["+91 8305959538, +91 6261610281"], accent: "#3B82F6", light: "#EFF6FF", action: { label: "Call Now", href: "tel:+918305959538" } },
   { icon: "✉️", label: "Email Us", lines: ["kiwiconnectdigital@gmail.com"], accent: "#F97316", light: "#FFF7ED", action: { label: "Send Email", href: "mailto: kiwiconnectdigital@gmail.com" } },
 ];

@@ -14,7 +14,7 @@ app.use(express.urlencoded({ limit: "500mb", extended: true }));
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      process.env.MONGODB_URI || "mongodb://localhost:27017/kiwigram",
+      process.env.MONGODB_URI || "mongodb+srv://admin:admin@cluster0.balxtwx.mongodb.net/kiwigram",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

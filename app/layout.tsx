@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
+import PageLoader from "@/app/components/PageLoader";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${urbanist.className} noise`}>
+        <PageLoader />
         {children}
       </body>
     </html>

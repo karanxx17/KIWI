@@ -112,13 +112,15 @@ const TESTIMONIALS = [
 ];
 
 const CLIENTS = [
-  "/clients/client1.png",
+  "/clients/client1.jpg",
   "/clients/client2.png",
   "/clients/client3.png",
   "/clients/client4.png",
   "/clients/client5.png",
   "/clients/client6.png",
-  "/clients/client7.png",
+  "/clients/logo1.png",
+  "/clients/logo.png",
+  "/clients/logo 2.jpg",
 ];
 
 function useInView<T extends HTMLElement = HTMLDivElement>(
@@ -549,23 +551,27 @@ function EmployeesSection() {
 // ─────────────────────────────────────────
 function ClientsSection() {
   const [ref, inView] = useInView();
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // Duplicate logos for seamless infinite loop
+  const doubled = [...CLIENTS, ...CLIENTS];
+
   return (
     <section id="clients" ref={ref} className="clients">
       <div className="container">
         <p className="clients__label">Trusted by leading brands worldwide</p>
-        <div className="clients__logos">
-          {CLIENTS.map((url, i) => (
-            <div
-              key={i}
-              className={`clients__logo${inView ? " clients__logo--in" : ""}`}
-              style={{ transitionDelay: `${i * 0.06}s` }}
-            >
+      </div>
+
+      <div className="carousel">
+        <div className="carousel__track" ref={trackRef}>
+          {doubled.map((url, i) => (
+            <div key={i} className="carousel__item">
               <img
                 src={url}
                 alt="client"
-                style={{ height: 80, objectFit: "contain" }}
+                style={{ height: 64, objectFit: "contain", maxWidth: 140 }}
                 onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
+                  (e.target as HTMLImageElement).style.visibility = "hidden";
                 }}
               />
             </div>
@@ -1314,34 +1320,73 @@ export default function KiwiConnectDigital() {
         .pillar__title { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .pillar__sub { font-size: 13px; color: #888; margin-top: 2px; font-weight: 500; }
 
-        /* ── CLIENTS ───────────────────────── */
-        .clients {
-          padding: 60px 0;
-          background: #FAFAF7;
-          border-top: 1px solid #EAE6E0;
-          border-bottom: 1px solid #EAE6E0;
-        }
-        @media (min-width: 768px) { .clients { padding: 80px 0; } }
+       /* ── CLIENTS CAROUSEL ──────────────────── */
+.clients {
+  padding: 60px 0;
+  background: #FAFAF7;
+  border-top: 1px solid #EAE6E0;
+  border-bottom: 1px solid #EAE6E0;
+  overflow: hidden;
+}
+@media (min-width: 768px) { .clients { padding: 80px 0; } }
 
-        .clients__label {
-          text-align: center; font-size: 11px; font-weight: 800;
-          color: #AAA; letter-spacing: 2.5px; text-transform: uppercase;
-          margin-bottom: 36px;
-        }
-        @media (min-width: 480px) { .clients__label { font-size: 12px; margin-bottom: 44px; } }
+.clients__label {
+  text-align: center; font-size: 11px; font-weight: 800;
+  color: #AAA; letter-spacing: 2.5px; text-transform: uppercase;
+  margin-bottom: 36px;
+}
 
-        .clients__logos {
-          display: flex; justify-content: center; align-items: center;
-          gap: 28px; flex-wrap: wrap;
-        }
-        @media (min-width: 768px) { .clients__logos { gap: 48px; } }
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-        .clients__logo {
-          transform: translateY(16px);
-          transition: all 0.6s ease, opacity 0.3s, filter 0.3s;
-        }
-        .clients__logo--in { transform: translateY(0); }
-        .clients__logo:hover { opacity: 1 !important; filter: grayscale(0) !important; }
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* fade edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.carousel__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.carousel__track:hover {
+  animation-play-state: paused;
+}
+
+.carousel__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  transition: opacity 0.3s, filter 0.3s;
+  flex-shrink: 0;
+}
+
+.carousel__item:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
 
         /* ── TESTIMONIALS ──────────────────── */
         .testimonial {
