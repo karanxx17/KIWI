@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // Create storage engine
 const storage = new GridFsStorage({
-  url: process.env.MONGODB_URI || "mongodb://localhost:27017/kiwigram",
+  url: process.env.MONGODB_URI || "mongodb://admin:admin@ac-6vsbcgd-shard-00-00.balxtwx.mongodb.net:27017,ac-6vsbcgd-shard-00-01.balxtwx.mongodb.net:27017,ac-6vsbcgd-shard-00-02.balxtwx.mongodb.net:27017/?ssl=true&replicaSet=atlas-4lj0rr-shard-0&authSource=admin&appName=Cluster0/kiwigram",
   file: (req, file) => {
     return new Promise((resolve, reject) => {
       // You can define a custom filename or just use the original
