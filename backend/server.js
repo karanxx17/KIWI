@@ -14,7 +14,7 @@ app.use(express.urlencoded({ limit: "500mb", extended: true }));
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      process.env.MONGODB_URI || "mongodb+srv://admin:admin@cluster0.balxtwx.mongodb.net/kiwigram",
+      process.env.MONGODB_URI || "mongodb://admin:admin@ac-6vsbcgd-shard-00-00.balxtwx.mongodb.net:27017,ac-6vsbcgd-shard-00-01.balxtwx.mongodb.net:27017,ac-6vsbcgd-shard-00-02.balxtwx.mongodb.net:27017/?ssl=true&replicaSet=atlas-4lj0rr-shard-0&authSource=admin&appName=Cluster0/kiwigram",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
